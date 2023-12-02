@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Day11.三数之和(15)采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。">
+  <meta name="description" content="1.三数之和(15)采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode_day1">
 <meta property="og:url" content="http://example.com/2023/12/01/leetcode_day1/index.html">
 <meta property="og:site_name" content="Yan">
-<meta property="og:description" content="Day11.三数之和(15)采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。">
+<meta property="og:description" content="1.三数之和(15)采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-01T10:53:00.000Z">
-<meta property="article:modified_time" content="2023-12-01T10:55:20.400Z">
+<meta property="article:modified_time" content="2023-12-02T01:46:48.667Z">
 <meta property="article:author" content="Yan Zhang">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
@@ -207,17 +207,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-12-01 18:53:00 / Modified: 18:55:20" itemprop="dateCreated datePublished" datetime="2023-12-01T18:53:00+08:00">2023-12-01</time>
+              <time title="Created: 2023-12-01 18:53:00" itemprop="dateCreated datePublished" datetime="2023-12-01T18:53:00+08:00">2023-12-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-12-02 09:46:48" itemprop="dateModified" datetime="2023-12-02T09:46:48+08:00">2023-12-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
                 </span>
             </span>
 
@@ -234,7 +240,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>620</span>
+              <span>619</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -253,7 +259,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h1><h2 id="1-三数之和-15"><a href="#1-三数之和-15" class="headerlink" title="1.三数之和(15)"></a>1.三数之和(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/description/">15</a>)</h2><p>采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。</p>
+        <h2 id="1-三数之和-15"><a href="#1-三数之和-15" class="headerlink" title="1.三数之和(15)"></a>1.三数之和(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/description/">15</a>)</h2><p>采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。</p>
 <span id="more"></span>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>;<span class="comment">//因为排序过了，如果i和i-1相同则情况一样，跳过</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>, k = n <span class="number">-1</span>; j &lt; k; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j &gt; i + <span class="number">1</span> &amp;&amp; nums[j] == nums[j<span class="number">-1</span>])   <span class="keyword">continue</span>;<span class="comment">//同理</span></span><br><span class="line">                <span class="keyword">while</span>(j &lt; k - <span class="number">1</span> &amp;&amp; nums[i] + nums[j] + nums[k - <span class="number">1</span>] &gt;= <span class="number">0</span>) k--;</span><br><span class="line">                <span class="keyword">if</span>(nums[i] + nums[j] + nums[k] == <span class="number">0</span>)</span><br><span class="line">                res.<span class="built_in">push_back</span>(&#123;nums[i], nums[j], nums[k]&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -296,7 +302,10 @@
     <a href="/2023/11/30/leetcode_day0/" rel="prev" title="leetcode_day0">
       <i class="fa fa-chevron-left"></i> leetcode_day0
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/12/02/leetcode_day2/" rel="next" title="leetcode_day2">
+      leetcode_day2 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -355,7 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day1"><span class="nav-number">1.</span> <span class="nav-text">Day1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C-15"><span class="nav-number">1.1.</span> <span class="nav-text">1.三数之和(15)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C-53"><span class="nav-number">1.2.</span> <span class="nav-text">2.最大子数组和(53)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%88%E6%89%8B%E6%92%95%E5%BF%AB%E6%8E%92%EF%BC%89-912"><span class="nav-number">1.3.</span> <span class="nav-text">3.排序数组（手撕快排）(912)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8-21"><span class="nav-number">1.4.</span> <span class="nav-text">4.合并两个有序链表(21)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-1"><span class="nav-number">1.5.</span> <span class="nav-text">5. 两数之和(1)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C-15"><span class="nav-number">1.</span> <span class="nav-text">1.三数之和(15)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C-53"><span class="nav-number">2.</span> <span class="nav-text">2.最大子数组和(53)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%88%E6%89%8B%E6%92%95%E5%BF%AB%E6%8E%92%EF%BC%89-912"><span class="nav-number">3.</span> <span class="nav-text">3.排序数组（手撕快排）(912)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8-21"><span class="nav-number">4.</span> <span class="nav-text">4.合并两个有序链表(21)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-1"><span class="nav-number">5.</span> <span class="nav-text">5. 两数之和(1)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -371,14 +380,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
