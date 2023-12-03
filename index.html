@@ -206,7 +206,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-12-02 09:44:07 / Modified: 09:46:10" itemprop="dateCreated datePublished" datetime="2023-12-02T09:44:07+08:00">2023-12-02</time>
+              <time title="Created: 2023-12-02 09:44:07 / Modified: 20:47:53" itemprop="dateCreated datePublished" datetime="2023-12-02T09:44:07+08:00">2023-12-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>6 mins.</span>
             </span>
 
         </div>
@@ -243,8 +243,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
+          <h2 id="最长回文子串-5"><a href="#最长回文子串-5" class="headerlink" title="最长回文子串(5)"></a>最长回文子串(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-palindromic-substring/description/">5</a>)</h2><p>本题字符串长度1000，则n方的时间复杂度即可，即枚举法，对回文串的中心进行枚举，两个指针向左右两边枚举，分两种情况，奇数的回文串和偶数的回文串。最后返回最长的那个。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/12/02/leetcode_day2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -294,7 +301,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-12-02 09:46:48" itemprop="dateModified" datetime="2023-12-02T09:46:48+08:00">2023-12-02</time>
+                <time title="Modified: 2023-12-02 09:50:01" itemprop="dateModified" datetime="2023-12-02T09:50:01+08:00">2023-12-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -312,7 +319,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>619</span>
+              <span>614</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -331,7 +338,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1-三数之和-15"><a href="#1-三数之和-15" class="headerlink" title="1.三数之和(15)"></a>1.三数之和(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/description/">15</a>)</h2><p>采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。</p>
+          <h2 id="三数之和-15"><a href="#三数之和-15" class="headerlink" title="三数之和(15)"></a>三数之和(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/description/">15</a>)</h2><p>采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/12/01/leetcode_day1/#more" rel="contents">
@@ -389,7 +396,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-12-02 09:46:55" itemprop="dateModified" datetime="2023-12-02T09:46:55+08:00">2023-12-02</time>
+                <time title="Modified: 2023-12-02 09:50:23" itemprop="dateModified" datetime="2023-12-02T09:50:23+08:00">2023-12-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -407,7 +414,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.1k</span>
+              <span>1k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -428,7 +435,7 @@
       
           <p>重新开启刷题计划，希望能坚持下去。按照codetop的顺序往下刷。</p>
 <p>每日题量不定。包含了题目即leetcode链接。</p>
-<h2 id="1-无重复字符的最长子串-3"><a href="#1-无重复字符的最长子串-3" class="headerlink" title="1. 无重复字符的最长子串(3)"></a>1. 无重复字符的最长子串(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/">3</a>)</h2><p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。首先想到了动态规划，dp[i]存放了到第i个数的最长子串，所以计算第i个时候需要从第i-1个点最长中遍历看看有没有重复的，如果有，那dp[i] &#x3D; i - j。否则dp[i] &#x3D; dp[i-1] + 1，代码如下：</p>
+<h2 id="无重复字符的最长子串-3"><a href="#无重复字符的最长子串-3" class="headerlink" title="无重复字符的最长子串(3)"></a>无重复字符的最长子串(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/">3</a>)</h2><p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。首先想到了动态规划，dp[i]存放了到第i个数的最长子串，所以计算第i个时候需要从第i-1个点最长中遍历看看有没有重复的，如果有，那dp[i] = i - j。否则dp[i] = dp[i-1] + 1，代码如下：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/11/30/leetcode_day0/#more" rel="contents">
@@ -528,7 +535,6 @@
 <p>sudo apt upgrade</p>
 <p>使用apt安装允许通过HTTPS才能使用的软件包：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apt-transport-https ca-certificates curl software-properties-common</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>将官方docker存储库的GPG密匙添加到系统</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line"></span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -802,7 +808,7 @@
           <blockquote class="blockquote-center">Life goes on</blockquote> 
 
 
-<h1 id="damn"><a href="#damn" class="headerlink" title="damn"></a>damn</h1><p>​These days I am beginning my study of OS, and I will write down some notes on what I have learned. I have no clear purpose. I just want to keep myself busy and avoid the grief. But I made a stupid decision to buy a tin of RIO.</p>
+<h1 id="damn"><a href="#damn" class="headerlink" title="damn"></a>damn</h1><p>​These days I am beginning my study of OS, and I will write down some notes on what I have learned. I have no clear purpose. I just want to keep myself busy and avoid the grief. But I made a stupid decision to buy a tin of RIO.<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/07/23/me/#more" rel="contents">
@@ -1156,13 +1162,13 @@ happiness dwells in the soul.</blockquote>
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">7k</span>
+    <span title="Symbols count total">8k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">24 mins.</span>
+    <span title="Reading time total">30 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
   </div>
@@ -1216,6 +1222,8 @@ happiness dwells in the soul.</blockquote>
 <script src="/js/next-boot.js"></script>
 
 
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
 
 
   
@@ -1233,6 +1241,8 @@ happiness dwells in the soul.</blockquote>
 
 
 
+
+  
 
   
 
