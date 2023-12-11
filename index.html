@@ -212,7 +212,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-12-11 21:07:41" itemprop="dateModified" datetime="2023-12-11T21:07:41+08:00">2023-12-11</time>
+                <time title="Modified: 2023-12-11 21:10:41" itemprop="dateModified" datetime="2023-12-11T21:10:41+08:00">2023-12-11</time>
               </span>
 
           <br>
@@ -221,7 +221,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>173</span>
+              <span>174</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -242,11 +242,14 @@
       
           <h2 id="爬楼梯-70"><a href="#爬楼梯-70" class="headerlink" title="爬楼梯(70)"></a>爬楼梯(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/submissions/488082888/">70</a>)</h2><p>dp，代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">climbStairs</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> b = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">3</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="type">int</span> s = a + b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="字符串转换整数-8"><a href="#字符串转换整数-8" class="headerlink" title="字符串转换整数(8)"></a>字符串转换整数(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/string-to-integer-atoi/">8</a>)</h2><p>如果开头是字母的话，指针不会往后走，所以会返回默认的0。</p>
-<p>主要考虑符号，以及范围，res要使用long long。</p>
-<p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">myAtoi</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>( k &lt; s.<span class="built_in">size</span>() &amp;&amp; s[k] == <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;k&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">if</span>(k == s.<span class="built_in">size</span>())   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> sym = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(s[k] == <span class="string">&#x27;-&#x27;</span>)&#123;</span><br><span class="line">            sym = <span class="number">-1</span>;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s[k] == <span class="string">&#x27;+&#x27;</span>)&#123;</span><br><span class="line">            sym = <span class="number">1</span>;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(k &lt; s.<span class="built_in">size</span>() &amp;&amp; s[k] &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; s[k]&lt;=<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">            res = res*<span class="number">10</span> + s[k] - <span class="string">&#x27;0&#x27;</span>; </span><br><span class="line">            k++;</span><br><span class="line">            <span class="keyword">if</span>(res &gt; INT_MAX)   <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        res *= sym;</span><br><span class="line">        <span class="keyword">if</span>(res &gt; INT_MAX)   <span class="keyword">return</span> INT_MAX;</span><br><span class="line">        <span class="keyword">if</span>(res &lt; INT_MIN)   <span class="keyword">return</span> INT_MIN;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/12/10/leetcode-day10/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -296,7 +299,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-12-10 00:18:59" itemprop="dateModified" datetime="2023-12-10T00:18:59+08:00">2023-12-10</time>
+                <time title="Modified: 2023-12-11 21:10:52" itemprop="dateModified" datetime="2023-12-11T21:10:52+08:00">2023-12-11</time>
               </span>
 
           <br>
@@ -305,7 +308,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>184</span>
+              <span>185</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -326,11 +329,14 @@
       
           <h2 id="排序链表-148"><a href="#排序链表-148" class="headerlink" title="排序链表(148)"></a>排序链表(148)</h2><h2 id="下一个排列-31"><a href="#下一个排列-31" class="headerlink" title="下一个排列(31)"></a>下一个排列(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-permutation/description/">31</a>)</h2><p>他会先升序再降序，所以找到第一个使得nums[k-1]&lt;nums[k]的数，如果都是倒序的话，就直接翻转就行。</p>
 <p>然后找到右边降序的第一个比nums[k-1]大的数字。交换，再将降序的序列反转。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">nextPermutation</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> k = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>( k&gt; <span class="number">0</span> &amp;&amp; nums[k - <span class="number">1</span>] &gt;= nums[k])  k--;</span><br><span class="line">        <span class="keyword">if</span>(k &lt;= <span class="number">0</span>)   <span class="built_in">reverse</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="type">int</span> t = k;</span><br><span class="line">            <span class="keyword">while</span>(t &lt; nums.<span class="built_in">size</span>() &amp;&amp; nums[t] &gt; nums[k - <span class="number">1</span>])    t++;</span><br><span class="line">            <span class="built_in">swap</span>(nums[t - <span class="number">1</span>],nums[k - <span class="number">1</span>]);</span><br><span class="line">            <span class="built_in">reverse</span>(nums.<span class="built_in">begin</span>() + k,nums.<span class="built_in">end</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="x的平方根-69"><a href="#x的平方根-69" class="headerlink" title="x的平方根(69)"></a>x的平方根(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sqrtx/description/">69</a>)</h2><p>二分法：</p>
-<p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mySqrt</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ans;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = x;</span><br><span class="line">        <span class="keyword">while</span>( l &lt;= r)&#123;</span><br><span class="line">            <span class="type">int</span> mid = (l + r ) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &lt;= x) ans = mid, l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/12/09/leetcode-day9/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
