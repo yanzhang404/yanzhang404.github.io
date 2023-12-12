@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="UCB_CS186take some note on the lesson, and record the project in this markdown. project2 implement:My implement reference:https:&#x2F;&#x2F;github.com&#x2F;mag1cianag&#x2F;UCB-CS186 DATABASE-0-introDatabase SystemSystem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UCB_CS186">
+<meta property="og:url" content="http://example.com/2023/12/12/UCBCS186_note/index.html">
+<meta property="og:site_name" content="Yan">
+<meta property="og:description" content="UCB_CS186take some note on the lesson, and record the project in this markdown. project2 implement:My implement reference:https:&#x2F;&#x2F;github.com&#x2F;mag1cianag&#x2F;UCB-CS186 DATABASE-0-introDatabase SystemSystem">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-03%2023.12.24.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-03%2023.12.35.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-08%2016.43.21.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-08%2016.44.25.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-08%2016.45.31.png">
+<meta property="article:published_time" content="2023-12-12T12:14:25.000Z">
+<meta property="article:modified_time" content="2023-12-12T12:22:00.171Z">
+<meta property="article:author" content="Yan Zhang">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-03%2023.12.24.png">
+
+<link rel="canonical" href="http://example.com/2023/12/12/UCBCS186_note/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>UCB_CS186 | Yan</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=398806588"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '398806588');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3fbf61bd5636603690d55ed973dbb1e3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yan</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">be water my friend</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/12/UCBCS186_note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/69283019?v=4">
+      <meta itemprop="name" content="Yan Zhang">
+      <meta itemprop="description" content="student">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UCB_CS186
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-12-12 20:14:25 / Modified: 20:22:00" itemprop="dateCreated datePublished" datetime="2023-12-12T20:14:25+08:00">2023-12-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>14 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="UCB-CS186"><a href="#UCB-CS186" class="headerlink" title="UCB_CS186"></a>UCB_CS186</h1><p>take some note on the lesson, and record the project in this markdown.</p>
+<p>project2 implement:<a target="_blank" rel="noopener" href="https://github.com/yanzhang404/cs186.git">My implement</a></p>
+<p>reference:<a target="_blank" rel="noopener" href="https://github.com/mag1cianag/UCB-CS186">https://github.com/mag1cianag/UCB-CS186</a></p>
+<h1 id="DATABASE-0-intro"><a href="#DATABASE-0-intro" class="headerlink" title="DATABASE-0-intro"></a>DATABASE-0-intro</h1><h2 id="Database-System"><a href="#Database-System" class="headerlink" title="Database System"></a>Database System</h2><p>System for providing EFFICIENT,CONVENIENT,SAFE, MULTI_USER storage of and access ti NASSIIVE amounts of PERSISTENT data</p>
+<p><img src="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-03%2023.12.24.png" alt="截屏2023-12-03 23.12.24"></p>
+<p><img src="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-03%2023.12.35.png" alt="截屏2023-12-03 23.12.35"></p>
+<h1 id="project-1"><a href="#project-1" class="headerlink" title="project_1"></a>project_1</h1><p>just follow the step in project-gitbook,we can get it from github</p>
+<p>as we download the lahman.db, we can use sqlite3 to view the database.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 lahman.db</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="Your-Tasks"><a href="#Your-Tasks" class="headerlink" title="Your Tasks"></a>Your Tasks</h2><h3 id="Task-2-Hall-of-Fame-Schools"><a href="#Task-2-Hall-of-Fame-Schools" class="headerlink" title="Task 2: Hall of Fame Schools"></a>Task 2: <strong>Hall of Fame Schools</strong></h3><p><strong>i.</strong> Find the <code>namefirst</code>, <code>namelast</code>, <code>playerid</code> and <code>yearid</code> of all people who were successfully inducted into the Hall of Fame in _descending_ order of <code>yearid</code>. Break ties on <code>yearid</code> by <code>playerid</code> (ascending).</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> namefirst,namelast,people.playerid,halloffame.yearid </span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">JOIN</span> halloffame <span class="keyword">ON</span> people.playerid <span class="operator">=</span> halloffame.playerid</span><br><span class="line"><span class="keyword">WHERE</span> inducted <span class="operator">=</span> <span class="string">&#x27;Y&#x27;</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> yearid <span class="keyword">DESC</span>, people.playerid <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>ii.</strong> Find the people who were successfully inducted into the Hall of Fame and played in college at a school located in the state of California. For each person, return their <code>namefirst</code>, <code>namelast</code>, <code>playerid</code>, <code>schoolid</code>, and <code>yearid</code> in _descending_ order of <code>yearid</code>. Break ties on <code>yearid</code> by <code>schoolid, playerid</code> (ascending). For this question, <code>yearid</code> refers to the year of induction into the Hall of Fame.</p>
+<p>首先这个人要在halloffame里，有一个collageplaying table, 一个schools表，我先找到学校在CA的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.namefirst, A.namelast, A.playerid, B.schoolID, A.yearid</span><br><span class="line"><span class="keyword">FROM</span> q2i <span class="keyword">AS</span> A</span><br><span class="line"><span class="keyword">JOIN</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> playerID, <span class="keyword">year</span>, schools.schoolID</span><br><span class="line">    <span class="keyword">FROM</span> collegeplaying</span><br><span class="line">    <span class="keyword">JOIN</span> schools <span class="keyword">ON</span> collegeplaying.schoolID <span class="operator">=</span> schools.schoolID</span><br><span class="line">    <span class="keyword">WHERE</span> schools.schoolState <span class="operator">=</span> &quot;CA&quot;</span><br><span class="line">) <span class="keyword">AS</span> B <span class="keyword">ON</span> A.playerid <span class="operator">=</span> B.playerID  #通过playerid连接</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> A.yearid <span class="keyword">DESC</span>, B.schoolID <span class="keyword">ASC</span>, A.playerid <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Note: a player may appear in the results multiple times (once per year in a college in California).</li>
+</ul>
+<p><strong>iii.</strong> Find the <code>playerid</code>, <code>namefirst</code>, <code>namelast</code> and <code>schoolid</code> of all people who were successfully inducted into the Hall of Fame — whether or not they played in college. Return people in _descending_ order of <code>playerid</code>. Break ties on <code>playerid</code> by <code>schoolid</code> (ascending). (Note: <code>schoolid</code> should be <code>NULL</code> if they did not play in college.)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.playerid, A.namefirst, A.namelast, B.schoolID</span><br><span class="line"><span class="keyword">FROM</span> q2i <span class="keyword">AS</span> A</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> collegeplaying <span class="keyword">AS</span> B <span class="keyword">ON</span> A.playerid <span class="operator">=</span> B.playerID </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> A.playerid <span class="keyword">DESC</span>,B.schoolID <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>NOTE:<strong>LEFT JOIN (or LEFT OUTER JOIN):</strong> Retrieves all rows from the left table (the table specified before <code>LEFT JOIN</code>), and the matched rows from the right table. If there is no match in the right table, the result will contain NULL values for columns from the right table.</p>
+<h3 id="Task-3-SaberMetrics"><a href="#Task-3-SaberMetrics" class="headerlink" title="Task 3: SaberMetrics"></a>Task 3: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sabermetrics"><strong>SaberMetrics</strong></a></h3><p><strong>i.</strong> Find the <code>playerid</code>, <code>namefirst</code>, <code>namelast</code>, <code>yearid</code> and single-year <code>slg</code> (Slugging Percentage) of the players with the 10 best annual Slugging Percentage recorded over all time. A player can appear multiple times in the output. For example, if Babe Ruth’s <code>slg</code> in 2000 and 2001 both landed in the top 10 best annual Slugging Percentage of all time, then we should include Babe Ruth twice in the output. For statistical significance, only include players with more than 50 at-bats in the season. Order the results by <code>slg</code> descending, and break ties by <code>yearid, playerid</code> (ascending).</p>
+<ul>
+<li>Baseball note: Slugging Percentage is not provided in the database; it is computed according to a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Slugging\_percentage">simple formula</a> you can calculate from the data in the database.</li>
+<li>SQL note: You should compute <code>slg</code> properly as a floating point number—-you’ll need to figure out how to convince SQL to do this!</li>
+<li>Data set note: The online documentation <code>batting</code> mentions two columns <code>2B</code> and <code>3B</code>. On your local copy of the data set these have been renamed <code>H2B</code> and <code>H3B</code> respectively (columns starting with numbers are tedious to write queries on).</li>
+<li>Data set note: The column <code>H</code> o f the <code>batting</code> table represents all hits = (# singles) + (# doubles) + (# triples) + (# home runs), not just (# singles) so you’ll need to account for some double-counting</li>
+<li>If a player played on multiple teams during the same season (for example <code>anderma02</code> in 2006) treat their time on each team separately for this calculation</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.playerID,A.namefirst,A.namelast,B.yearID,B.SLG</span><br><span class="line">  <span class="keyword">FROM</span>  people <span class="keyword">AS</span> A</span><br><span class="line">  <span class="keyword">JOIN</span></span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">SELECT</span> playerID,yearID,</span><br><span class="line">        ROUND(((&quot;H&quot; <span class="operator">-</span> &quot;H2B&quot; <span class="operator">-</span> &quot;H3B&quot; <span class="operator">-</span> &quot;HR&quot;) <span class="operator">/</span> <span class="number">1.0</span> <span class="operator">+</span> &quot;H2B&quot; <span class="operator">/</span> <span class="number">1.0</span> <span class="operator">*</span> <span class="number">2</span> <span class="operator">+</span> &quot;H3B&quot; <span class="operator">/</span> <span class="number">1.0</span> <span class="operator">*</span> <span class="number">3</span> <span class="operator">+</span> &quot;HR&quot; <span class="operator">/</span> <span class="number">1.0</span> <span class="operator">*</span> <span class="number">4</span>) <span class="operator">/</span> <span class="built_in">NULLIF</span>(&quot;AB&quot;, <span class="number">0</span>),<span class="number">4</span>) <span class="keyword">AS</span> SLG</span><br><span class="line">        <span class="keyword">FROM</span>  batting</span><br><span class="line">        <span class="keyword">WHERE</span> AB <span class="operator">&gt;</span> <span class="number">50</span></span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span> SLG <span class="keyword">DESC</span>,yearID <span class="keyword">ASC</span>,playerID <span class="keyword">ASC</span></span><br><span class="line">        LIMIT <span class="number">10</span></span><br><span class="line">    ) <span class="keyword">AS</span> B</span><br><span class="line"><span class="keyword">ON</span></span><br><span class="line">    A.playerID <span class="operator">=</span> B.playerID;</span><br></pre></td></tr></table></figure>
+<p><strong>ii.</strong> Following the results from Part i, find the <code>playerid</code>, <code>namefirst</code>, <code>namelast</code> and <code>lslg</code> (Lifetime Slugging Percentage) for the players with the top 10 Lifetime Slugging Percentage. Lifetime Slugging Percentage (LSLG) uses the same formula as Slugging Percentage (SLG), but it uses the number of singles, doubles, triples, home runs, and at bats each player has over their entire career, rather than just over a single season.</p>
+<p>Note that the database only gives batting information broken down by year; you will need to convert to total information across all time (from the earliest date recorded up to the last date recorded) to compute <code>lslg</code>. Order the results by <code>lslg</code> (descending) and break ties by <code>playerid</code> (ascending)</p>
+<ul>
+<li>Note: Make sure that you only include players with more than 50 at-bats across their lifetime.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.playerID,A.namefirst,A.namelast,</span><br><span class="line">  ROUND(((B.SH <span class="operator">-</span> B.SH2B <span class="operator">-</span> B.SH3B <span class="operator">-</span> B.SHR) <span class="operator">+</span> B.SH2B <span class="operator">*</span> <span class="number">2</span> <span class="operator">+</span> B.SH3B<span class="operator">*</span><span class="number">3</span> <span class="operator">+</span> B.SHR <span class="operator">*</span> <span class="number">4</span>) <span class="operator">/</span> <span class="built_in">NULLIF</span>(B.SAB, <span class="number">0</span>),<span class="number">4</span>) <span class="keyword">AS</span> LSLG </span><br><span class="line">  <span class="keyword">FROM</span> people <span class="keyword">AS</span> A</span><br><span class="line">  <span class="keyword">JOIN</span></span><br><span class="line">  (<span class="keyword">SELECT</span> playerID, <span class="built_in">CAST</span>(<span class="built_in">sum</span>(AB) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SAB,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(H) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(H2B) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH2B,</span><br><span class="line">  <span class="built_in">CAST</span>(<span class="built_in">sum</span>(H3B) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH3B,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(HR) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SHR</span><br><span class="line">  <span class="keyword">FROM</span> batting <span class="keyword">GROUP</span> <span class="keyword">BY</span> playerID</span><br><span class="line">  <span class="keyword">HAVING</span> SAB <span class="operator">&gt;</span> <span class="number">50</span>) <span class="keyword">AS</span> B </span><br><span class="line">  <span class="keyword">ON</span> A.playerID <span class="operator">=</span> B.playerID</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> LSLG <span class="keyword">DESC</span>,A.playerID <span class="keyword">ASC</span></span><br><span class="line">  LIMIT <span class="number">10</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<p><strong>iii.</strong> Find the <code>namefirst</code>, <code>namelast</code> and Lifetime Slugging Percentage (<code>lslg</code>) of batters whose lifetime slugging percentage is higher than that of San Francisco favorite Willie Mays.</p>
+<p>You may include Willie Mays’ <code>playerid</code> in your query (<code>mayswi01</code>), but you _may not_ include his slugging percentage — you should calculate that as part of the query. (Test your query by replacing <code>mayswi01</code> with the playerid of another player — it should work for that player as well! We may do the same in the autograder.)</p>
+<ul>
+<li>Note: Make sure that you still only include players with more than 50 at-bats across their lifetime.</li>
+</ul>
+<p>_Just for fun_: For those of you who are baseball buffs, variants of the above queries can be used to find other more detailed SaberMetrics, like <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Runs\_created">Runs Created</a> or <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Value\_over\_replacement\_player">Value Over Replacement Player</a>. Wikipedia has a nice page on <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Baseball\_statistics">baseball statistics</a>; most of these can be computed fairly directly in SQL.</p>
+<p>_Also just for fun_: SF Giants VP of Baseball Operations, <a target="_blank" rel="noopener" href="https://www.mlb.com/giants/team/front-office/yeshayah-goldfarb">Yeshayah Goldfarb</a>, suggested the following:</p>
+<blockquote>
+<p>Using the Lahman database as your guide, make an argument for when MLBs “Steroid Era” started and ended. There are a number of different ways to explore this question using the data.</p>
+</blockquote>
+<p>(Please do not include your “just for fun” answers in your solution file! They will break the autograder.)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">SELECT</span> A.namefirst,A.namelast,</span><br><span class="line">  ROUND(((B.SH <span class="operator">-</span> B.SH2B <span class="operator">-</span> B.SH3B <span class="operator">-</span> B.SHR) <span class="operator">+</span> B.SH2B <span class="operator">*</span> <span class="number">2</span> <span class="operator">+</span> B.SH3B<span class="operator">*</span><span class="number">3</span> <span class="operator">+</span> B.SHR <span class="operator">*</span> <span class="number">4</span>) <span class="operator">/</span> <span class="built_in">NULLIF</span>(B.SAB, <span class="number">0</span>),<span class="number">4</span>) <span class="keyword">AS</span> LSLG </span><br><span class="line">  <span class="keyword">FROM</span> people <span class="keyword">AS</span> A</span><br><span class="line">  <span class="keyword">JOIN</span></span><br><span class="line">  (<span class="keyword">SELECT</span> playerID, <span class="built_in">CAST</span>(<span class="built_in">sum</span>(AB) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SAB,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(H) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(H2B) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH2B,</span><br><span class="line">  <span class="built_in">CAST</span>(<span class="built_in">sum</span>(H3B) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH3B,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(HR) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SHR</span><br><span class="line">  <span class="keyword">FROM</span> batting <span class="keyword">GROUP</span> <span class="keyword">BY</span> playerID</span><br><span class="line">  <span class="keyword">HAVING</span> SAB <span class="operator">&gt;</span> <span class="number">50</span>) <span class="keyword">AS</span> B </span><br><span class="line">  <span class="keyword">ON</span> A.playerID <span class="operator">=</span> B.playerID</span><br><span class="line">  <span class="keyword">WHERE</span> LSLG <span class="operator">&gt;</span> </span><br><span class="line">  #先算出mayswi01的lslg是多少，让LSLG大于这个数的数据展示出来</span><br><span class="line">  (<span class="keyword">SELECT</span></span><br><span class="line">  ROUND(((B.SH <span class="operator">-</span> B.SH2B <span class="operator">-</span> B.SH3B <span class="operator">-</span> B.SHR) <span class="operator">+</span> B.SH2B <span class="operator">*</span> <span class="number">2</span> <span class="operator">+</span> B.SH3B<span class="operator">*</span><span class="number">3</span> <span class="operator">+</span> B.SHR <span class="operator">*</span> <span class="number">4</span>) <span class="operator">/</span> <span class="built_in">NULLIF</span>(B.SAB, <span class="number">0</span>),<span class="number">4</span>) <span class="keyword">AS</span> LSLG </span><br><span class="line">  <span class="keyword">FROM</span> </span><br><span class="line">  (<span class="keyword">SELECT</span> playerID, <span class="built_in">CAST</span>(<span class="built_in">sum</span>(AB) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SAB,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(H) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(H2B) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH2B,</span><br><span class="line">  <span class="built_in">CAST</span>(<span class="built_in">sum</span>(H3B) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SH3B,<span class="built_in">CAST</span>(<span class="built_in">sum</span>(HR) <span class="keyword">AS</span> <span class="type">FLOAT</span>) <span class="keyword">AS</span> SHR</span><br><span class="line">  <span class="keyword">FROM</span> batting <span class="keyword">GROUP</span> <span class="keyword">BY</span> playerID</span><br><span class="line">  <span class="keyword">HAVING</span> SAB <span class="operator">&gt;</span> <span class="number">50</span>) <span class="keyword">AS</span> B </span><br><span class="line">  <span class="keyword">WHERE</span> B.playerID <span class="operator">=</span> &quot;mayswi01&quot;)</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> A.namefirst;</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<h3 id="Task-4-Salaries"><a href="#Task-4-Salaries" class="headerlink" title="Task 4: Salaries"></a>Task 4: <strong>Salaries</strong></h3><p><strong>i.</strong> Find the <code>yearid</code>, min, max and average of all player salaries for each year recorded, ordered by <code>yearid</code> in _ascending_ order.</p>
+<p><strong>ii.</strong> For salaries in 2016, compute a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Histogram">histogram</a>. Divide the salary range into 10 equal bins from min to max, with <code>binid</code>s 0 through 9, and count the salaries in each bin. Return the <code>binid</code>, <code>low</code> and <code>high</code> boundaries for each bin, as well as the number of salaries in each bin, with results sorted from smallest bin to largest.</p>
+<ul>
+<li>Note: <code>binid</code> 0 corresponds to the lowest salaries, and <code>binid</code> 9 corresponds to the highest. The ranges are left-inclusive (i.e. <code>[low, high)</code>) — so the <code>high</code> value is excluded. For example, if bin 2 has a <code>high</code> value of 100000, salaries of 100000 belong in bin 3, and bin 3 should have a <code>low</code> value of 100000.</li>
+<li>Note: The <code>high</code> value for bin 9 may be inclusive).</li>
+<li>Note: The test for this question is broken into two parts. Use <code>python3 test.py -q 4ii_bins_0_to_8</code> and <code>python3 test.py -q 4ii_bin_9</code> to run the tests</li>
+<li>Hidden testing advice: we will be testing the case where a bin has zero player salaries in it. The correct behavior in this case is to display the correct <code>binid</code>, <code>low</code> and <code>high</code> with a <code>count</code> of zero, NOT just excluding the bin altogether.</li>
+</ul>
+<p>Some useful information:</p>
+<ul>
+<li>In the lahman.db, you may find it helpful to use the provided helper table <code>binids</code>, which contains all the possible <code>binid</code>s. Get a feel of what the data looks like by running <code>SELECT * FROM binids;</code> in a sqlite terminal. We’ll only be testing with these possible binids (there aren’t any hidden tests using say, 100 bins) so using the hardcoded table is fine</li>
+<li>If you want to take the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Floor\_and\_ceiling\_functions">floor </a>of a positive float value you can do <code>CAST (some_value AS INT)</code></li>
+</ul>
+<p><strong>iii.</strong> Now let’s compute the Year-over-Year change in min, max and average player salary. For each year with recorded salaries after the first, return the <code>yearid</code>, <code>mindiff</code>, <code>maxdiff</code>, and <code>avgdiff</code> with respect to the previous year. Order the output by <code>yearid</code> in _ascending_ order. (You should omit the very first year of recorded salaries from the result.)</p>
+<p><strong>iv.</strong> In 2001, the max salary went up by over $6 million. Write a query to find the players that had the max salary in 2000 and 2001. Return the <code>playerid</code>, <code>namefirst</code>, <code>namelast</code>, <code>salary</code> and <code>yearid</code> for those two years. If multiple players tied for the max salary in a year, return all of them.</p>
+<ul>
+<li>Note on notation: you are computing a relational variant of the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Arg\_max">argmax</a> for each of those two years.</li>
+</ul>
+<p><strong>v.</strong> Each team has at least 1 All Star and may have multiple. For each team in the year 2016, give the <code>teamid</code> and <code>diffAvg</code> (the difference between the team’s highest paid all-star’s salary and the team’s lowest paid all-star’s salary).</p>
+<ul>
+<li>Note: Due to some discrepancies in the database, please draw your team names from the All-Star table (so use <code>allstarfull.teamid</code> in the SELECT statement for this).</li>
+</ul>
+<h1 id="Disk-based-data-structure"><a href="#Disk-based-data-structure" class="headerlink" title="Disk-based data structure"></a>Disk-based data structure</h1><p>How to store date use an index</p>
+<p>Index is a data structure that enables fast <strong>lookup</strong> and <strong>modification</strong> of <strong>data entries</strong> by <strong>search key</strong></p>
+<h2 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B+Tree"></a>B+Tree</h2><h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><ul>
+<li>The number <code>d</code> is the order of a B+ tree. Each node (with the exception of the root node) must have <code>d</code> ≤ x ≤ <code>2d</code> entries assuming no deletes happen (it’s possible for leaf nodes to end up with &lt; d entries if you delete data). The entries within each node must be <strong>sorted</strong>.</li>
+<li>In between each entry of an inner node, there is a pointer to a child node. Since there are at most <code>2d</code> entries in a node, inner nodes may have at most <code>2d+1</code> child pointers. This is also called the tree’s fanout.</li>
+<li>The keys in the children to the left of an entry must be less than the entry while the keys in the children to the right must be greater than or equal to the entry.</li>
+<li>All leaves are at the same depth and have between <code>d</code> and <code>2d</code> entries (i.e., at least half full)</li>
+</ul>
+<h3 id="how-to-insert-in-a-B-Tree"><a href="#how-to-insert-in-a-B-Tree" class="headerlink" title="how to insert in a B+Tree"></a>how to insert in a B+Tree</h3><p><img src="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-08%2016.43.21.png" alt="截屏2023-12-08 16.43.21"></p>
+<p>To insert an entry into the B+ tree, follow this procedure:</p>
+<ol>
+<li>Find the leaf node <code>L</code> in which you will insert your value. You can do this by traversing down the tree. Add the key and the record to the leaf node in order.</li>
+<li>If <code>L</code> overflows (<code>L</code> has more than <code>2d</code> entries)<ol>
+<li>Split into <code>L_1</code> and <code>L_2</code>. Keep <code>d</code> entries in <code>L_1</code> (this means <code>d+1</code> entries will go in <code>L_2</code>).</li>
+<li>If $L$ was a leaf node, <strong>COPY</strong> $L_2$’s first entry into the parent. If $L$ was not a leaf node, <strong>MOVE</strong> $L_2$’s first entry into the parent.</li>
+<li>Adjust pointers.</li>
+</ol>
+</li>
+</ol>
+<p>Bulk loading a B+ tree</p>
+<p><img src="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-08%2016.44.25.png" alt="截屏2023-12-08 16.44.25"></p>
+<p><img src="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-12-08%2016.45.31.png" alt="截屏2023-12-08 16.45.31"></p>
+<h3 id="Counting-IO’s"><a href="#Counting-IO’s" class="headerlink" title="Counting IO’s"></a>Counting IO’s</h3><p>Here’s the general procedure. It’s a good thing to write on your cheat sheet:</p>
+<ol>
+<li>Read the appropriate root-to-leaf path.</li>
+<li>Read the appropriate data page(s). If we need to read multiple pages, we will allot a read IO for each page. In addition, we account for clustering for Alt. 2 or 3 (see below.)</li>
+<li>Write data page, if you want to modify it. Again, if we want to do a write that spans multiple data pages, we will need to allot a write IO for each page.</li>
+<li>Update index page(s).</li>
+</ol>
+<h1 id="Project2"><a href="#Project2" class="headerlink" title="Project2"></a>Project2</h1><h2 id="Some-important-class"><a href="#Some-important-class" class="headerlink" title="Some important class"></a>Some important class</h2><p><strong>Buffer &amp;&amp; ByteBuffer</strong>:</p>
+<blockquote>
+<p>Buffers are used to store and sequences of bytes, for example when we want to serialize information into a byte sequence that can be stored on disk and deserialize the sequence back into a Java object. Put methods will return the buffer itself allowing you to chain together calls to put. For example, calling</p>
+</blockquote>
+<p>We wrapper around java.nio.ByteBuffer to implement our Buffer interface.</p>
+<p><strong>BufferFrame &amp;&amp; Buffer Manager</strong></p>
+<p><strong>Page &amp;&amp; PageDirectory</strong></p>
+<p><strong>BPlusNode</strong>:</p>
+<p>There are InnerNode and LeafNode extend BPlusNode.</p>
+<p>Some  methods:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> Optional&lt;Pair&lt;DataBox, Long&gt;&gt; <span class="title function_">put</span><span class="params">(DataBox key, RecordId rid)</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>n.put(k, r) inserts the pair (k, r) into the subtree rooted by n.</p>
+<p>There are two cases to consider:<br>Case 1: If inserting the pair (k, r) does NOT cause n to overflow, then Optional.empty() is returned.<br>Case 2: If inserting the pair (k, r) does cause the node n to overflow,then n is split into a left and right node (described more below) and a pair (split_key, right_node_page_num) is returned where right_node_page_num is the page number of the newly created right node, and the value of split_key depends on whether n is an inner node or a leaf node (described more below).</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> Optional&lt;Pair&lt;DataBox, Long&gt;&gt; <span class="title function_">bulkLoad</span><span class="params">(Iterator&lt;Pair&lt;DataBox, RecordId&gt;&gt; data,</span></span><br><span class="line"><span class="params">        <span class="type">float</span> fillFactor)</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>n.bulkLoad(data, fillFactor) bulk loads pairs of (k, r) from data into the tree with the given fill factor.</p>
+</blockquote>
+<p><strong>BPlusTreeMetadata</strong></p>
+<h2 id="Your-Tasks-1"><a href="#Your-Tasks-1" class="headerlink" title="Your Tasks"></a>Your Tasks</h2><h3 id="Task-1-LeafNode-fromBytes"><a href="#Task-1-LeafNode-fromBytes" class="headerlink" title="Task 1: LeafNode::fromBytes"></a>Task 1: LeafNode::fromBytes</h3><p>You should first implement the <code>fromBytes</code> in <code>LeafNode</code>. This method reads a <code>LeafNode</code> from a page. For information on how a leaf node is serialized, see <code>LeafNode::toBytes</code>. For an example on how to read a node from disk, see <code>InnerNode::fromBytes</code>. Your code should be similar to the inner node version but should account for the differences between how inner nodes and leaf nodes are serialized. You may find the documentation in <a target="_blank" rel="noopener" href="https://github.com/berkeley-cs186/fa23-rookiedb/blob/master/src/main/java/edu/berkeley/cs186/database/common/ByteBuffer.java#L5"><code>ByteBuffer.java</code></a> helpful.</p>
+<p>Once you have implemented <code>fromBytes</code> you should be passing <code>TestLeafNode::testToAndFromBytes</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LeafNode <span class="title function_">fromBytes</span><span class="params">(BPlusTreeMetadata metadata, BufferManager bufferManager,</span></span><br><span class="line"><span class="params">                                    LockContext treeContext, <span class="type">long</span> pageNum)</span> &#123;</span><br><span class="line">       <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">       <span class="comment">// Note: LeafNode has two constructors. To implement fromBytes be sure to</span></span><br><span class="line">       <span class="comment">// use the constructor that reuses an existing page instead of fetching a</span></span><br><span class="line">       <span class="comment">// brand new one.</span></span><br><span class="line">       <span class="type">Page</span> <span class="variable">page</span> <span class="operator">=</span> bufferManager.fetchPage(treeContext, pageNum);</span><br><span class="line">       <span class="type">Buffer</span> <span class="variable">buf</span> <span class="operator">=</span> page.getBuffer();</span><br><span class="line"></span><br><span class="line">       <span class="type">byte</span> <span class="variable">nodeType</span> <span class="operator">=</span> buf.get();</span><br><span class="line">       <span class="keyword">assert</span> (nodeType == (<span class="type">byte</span>) <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">       <span class="type">long</span> <span class="variable">rightSibling_t</span> <span class="operator">=</span> buf.getLong();</span><br><span class="line">  			<span class="comment">//要判断一下rightSibling是不是-1</span></span><br><span class="line">  			<span class="keyword">if</span>(rightSibling_t.equals(-<span class="number">1L</span>))&#123;</span><br><span class="line">           rightSibling_t = <span class="literal">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//这边出现bug，没有用Optional.ofNullable</span></span><br><span class="line">   		<span class="comment">//Optional&lt;Long&gt; rightSibling = Optional.of(rightSibling_t);</span></span><br><span class="line">       Optional&lt;Long&gt; rightSibling = Optional.ofNullable(rightSibling_t);</span><br><span class="line">       <span class="type">int</span> <span class="variable">keysSize</span> <span class="operator">=</span> buf.getInt();</span><br><span class="line">       List&lt;DataBox&gt; keys = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">       List&lt;RecordId&gt; rids = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; keysSize; i++)&#123;</span><br><span class="line">           keys.add(DataBox.fromBytes(buf,metadata.getKeySchema()));</span><br><span class="line">           rids.add(RecordId.fromBytes(buf));</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">LeafNode</span>(metadata,bufferManager,page,keys,rids,rightSibling,treeContext);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Task-2-get-getLeftmostLeaf-put-remove"><a href="#Task-2-get-getLeftmostLeaf-put-remove" class="headerlink" title="Task 2: get, getLeftmostLeaf, put, remove"></a>Task 2: get, getLeftmostLeaf, put, remove</h3><p>After implementing <code>fromBytes</code>, you will need to implement the following methods in <code>LeafNode</code>, <code>InnerNode</code>, and <code>BPlusTree</code>:</p>
+<ul>
+<li><code>get</code></li>
+<li><code>getLeftmostLeaf</code> (<code>LeafNode</code> and <code>InnerNode</code> only)</li>
+<li><code>put</code></li>
+<li><code>remove</code></li>
+</ul>
+<p>For more information on what these methods should do refer to the comments in <code>BPlusTree</code> and <code>BPlusNode</code>.</p>
+<p>Each of these methods, although split into three different classes, can be viewed as one recursive action each - the <code>BPlusTree</code> method starts the call, the <code>InnerNode</code> method is the recursive case, and the <code>LeafNode</code> method is the base case. It’s suggested that you work on one method at a time (over all three classes).</p>
+<p>We’ve provided a <code>sync()</code> method in <code>LeafNode</code> and <code>InnerNode</code>. The purpose of <code>sync()</code> is to ensure that representation of a node in our buffers is up-to-date with the representation of the node in program memory. <strong>Do not forget to call <code>sync()</code> when implementing the two mutating methods</strong> (<code>put</code> and <code>remove</code>); it’s easy to forget.</p>
+<p>Code:</p>
+<p><code>get</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LeafNode: </span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> LeafNode <span class="title function_">get</span><span class="params">(DataBox key)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//InnerNode:</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> LeafNode <span class="title function_">get</span><span class="params">(DataBox key)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(!keys.isEmpty())&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">childIndex</span> <span class="operator">=</span> numLessThanEqual(key,keys);</span><br><span class="line">            <span class="keyword">return</span> getChild(childIndex).get(key);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//BPlusTree:</span></span><br><span class="line">   <span class="keyword">public</span> Optional&lt;RecordId&gt; <span class="title function_">get</span><span class="params">(DataBox key)</span> &#123;</span><br><span class="line">        typecheck(key);</span><br><span class="line">        <span class="comment">// TODO(proj4_integration): Update the following line</span></span><br><span class="line">        LockUtil.ensureSufficientLockHeld(lockContext, LockType.NL);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">        <span class="keyword">return</span> root.get(key).getKey(key);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>getLeftmostLeaf</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LeafNode</span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> LeafNode <span class="title function_">getLeftmostLeaf</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//InnerNode:</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> LeafNode <span class="title function_">getLeftmostLeaf</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">assert</span>(children.size() &gt; <span class="number">0</span>);</span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">        <span class="keyword">return</span> getChild(<span class="number">0</span>).getLeftmostLeaf();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>put</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//leafNode   </span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Optional&lt;Pair&lt;DataBox, Long&gt;&gt; <span class="title function_">put</span><span class="params">(DataBox key, RecordId rid)</span> &#123;</span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">        <span class="keyword">if</span>(keys.contains(key))&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BPlusTreeException</span>(<span class="string">&quot;duplicate keys!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">d</span> <span class="operator">=</span> metadata.getOrder();</span><br><span class="line">        <span class="type">int</span> <span class="variable">insertIndex</span> <span class="operator">=</span> InnerNode.numLessThanEqual(key,keys);</span><br><span class="line">        keys.add(insertIndex,key);</span><br><span class="line">        rids.add(insertIndex,rid);</span><br><span class="line">        <span class="keyword">if</span>(keys.size()&lt;=<span class="number">2</span>*d)&#123;</span><br><span class="line">            sync();</span><br><span class="line">            <span class="keyword">return</span> Optional.empty();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            List&lt;DataBox&gt; dataBoxes = keys.subList(d,keys.size());</span><br><span class="line">            List&lt;RecordId&gt; recordIds = rids.subList(d,keys.size());</span><br><span class="line">            keys = keys.subList(<span class="number">0</span>,d);</span><br><span class="line">            rids = rids.subList(<span class="number">0</span>,d);</span><br><span class="line"></span><br><span class="line">            <span class="type">LeafNode</span> <span class="variable">rs</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LeafNode</span>(metadata,bufferManager,dataBoxes,recordIds,rightSibling,treeContext);</span><br><span class="line">            <span class="built_in">this</span>.rightSibling = Optional.of(rs.getPage().getPageNum());</span><br><span class="line">            sync();</span><br><span class="line">            <span class="keyword">return</span> Optional.of(<span class="keyword">new</span> <span class="title class_">Pair</span>&lt;&gt;(dataBoxes.get(<span class="number">0</span>),rs.getPage().getPageNum()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//InnerNode</span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Optional&lt;Pair&lt;DataBox, Long&gt;&gt; <span class="title function_">put</span><span class="params">(DataBox key, RecordId rid)</span> &#123;</span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> numLessThanEqual(key,keys);</span><br><span class="line">        <span class="type">BPlusNode</span> <span class="variable">child</span> <span class="operator">=</span> getChild(index);</span><br><span class="line">        Optional&lt;Pair&lt;DataBox,Long&gt;&gt; backNode = child.put(key,rid);</span><br><span class="line">        <span class="keyword">if</span>(!backNode.isPresent())&#123;</span><br><span class="line">            <span class="keyword">return</span> Optional.empty();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            Pair&lt;DataBox,Long&gt; pair = backNode.get();</span><br><span class="line">            <span class="keyword">return</span> insert(pair.getFirst(),pair.getSecond());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Optional&lt;Pair&lt;DataBox,Long&gt;&gt; <span class="title function_">insert</span><span class="params">(DataBox key, Long pageNum)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> numLessThanEqual(key,keys);</span><br><span class="line">        keys.add(index,key);</span><br><span class="line">        <span class="type">int</span> <span class="variable">d</span> <span class="operator">=</span> metadata.getOrder();</span><br><span class="line">        <span class="keyword">if</span>(keys.size() &lt;= <span class="number">2</span>*d)&#123;</span><br><span class="line">            sync();</span><br><span class="line">            <span class="keyword">return</span> Optional.empty();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">DataBox</span> <span class="variable">dataBox</span> <span class="operator">=</span> keys.get(d);</span><br><span class="line">            List&lt;DataBox&gt; dataBoxes = keys.subList(d+<span class="number">1</span>, keys.size());</span><br><span class="line">            List&lt;Long&gt; longs = children.subList(d+<span class="number">1</span>,children.size());</span><br><span class="line">            keys = keys.subList(<span class="number">0</span>,d);</span><br><span class="line">            children = children.subList(<span class="number">0</span>,d+<span class="number">1</span>);</span><br><span class="line">            sync();</span><br><span class="line">            <span class="type">InnerNode</span> <span class="variable">innerNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InnerNode</span>(metadata,bufferManager,dataBoxes,longs,treeContext);</span><br><span class="line">            <span class="keyword">return</span> Optional.of(<span class="keyword">new</span> <span class="title class_">Pair</span>&lt;&gt;(dataBox,innerNode.getPage().getPageNum()));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//BPlusTree</span></span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(DataBox key, RecordId rid)</span> &#123;</span><br><span class="line">        typecheck(key);</span><br><span class="line">        <span class="comment">// TODO(proj4_integration): Update the following line</span></span><br><span class="line">        LockUtil.ensureSufficientLockHeld(lockContext, LockType.NL);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">        Optional&lt;Pair&lt;DataBox,Long&gt;&gt; back = root.put(key, rid);</span><br><span class="line">        back.ifPresent(dataBoxLongPair -&gt;splitRoot(dataBoxLongPair.getFirst(), dataBoxLongPair.getSecond()));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Note: You should NOT update the root variable directly.</span></span><br><span class="line">        <span class="comment">// Use the provided updateRoot() helper method to change</span></span><br><span class="line">        <span class="comment">// the tree&#x27;s root if the old root splits.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">splitRoot</span><span class="params">(DataBox key, Long child)</span>&#123;</span><br><span class="line">        List&lt;DataBox&gt; nKeys = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        nKeys.add(key);</span><br><span class="line">        List&lt;Long&gt; nChildren = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        nChildren.add(child);</span><br><span class="line">        <span class="type">InnerNode</span> <span class="variable">newRoot</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InnerNode</span>(metadata,bufferManager,nKeys,nChildren,lockContext);</span><br><span class="line">        updateRoot(newRoot);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>remove</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//leafNode</span></span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(DataBox key)</span> &#123;</span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> keys.indexOf(key);</span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            keys.remove(index);</span><br><span class="line">            rids.remove(index);</span><br><span class="line">          <span class="comment">//sync() is important</span></span><br><span class="line">            sync();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//InnerNode</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(DataBox key)</span> &#123;</span><br><span class="line">        <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">        <span class="type">LeafNode</span> <span class="variable">targetNode</span> <span class="operator">=</span> get(key);</span><br><span class="line">        targetNode.remove(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Task-3-Scans"><a href="#Task-3-Scans" class="headerlink" title="Task 3: Scans"></a>Task 3: Scans</h3><p>You will need to implement the following methods in <code>BPlusTree</code>:</p>
+<ul>
+<li><code>scanAll</code></li>
+<li><code>scanGreaterEqual</code></li>
+</ul>
+<p>In order to implement these, you will have to complete the <a target="_blank" rel="noopener" href="https://github.com/berkeley-cs186/fa23-rookiedb/blob/master/src/main/java/edu/berkeley/cs186/database/index/BPlusTree.java#L422"><code>BPlusTreeIterator</code></a> inner class in <code>BPlusTree.java</code>to complete these two methods.</p>
+<p>After completing this Task you should be passing <code>TestBPlusTree::testRandomPuts</code></p>
+<p>Your implementation <strong>does not</strong> have to account for the tree being modified during a scan. For the time being you can think of this as there being a lock that prevents scanning and mutation from overlapping, and that the behavior of iterators created before a modification is undefined (you can handle any problems with these iterators however you like, or not at all).</p>
+<p><strong>Iterator</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">BPlusTreeIterator</span> <span class="keyword">implements</span> <span class="title class_">Iterator</span>&lt;RecordId&gt; &#123;</span><br><span class="line">        <span class="comment">// TODO(proj2): Add whatever fields and constructors you want here.</span></span><br><span class="line">        LeafNode currNode;</span><br><span class="line">        Iterator&lt;RecordId&gt; currIter;</span><br><span class="line"></span><br><span class="line">        BPlusTreeIterator(LeafNode node)&#123;</span><br><span class="line">            <span class="built_in">this</span>.currNode = node;</span><br><span class="line">            currIter = currNode.scanAll();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BPlusTreeIterator(LeafNode node, DataBox key)&#123;</span><br><span class="line">            <span class="built_in">this</span>.currNode = node;</span><br><span class="line">            <span class="built_in">this</span>.currIter = currNode.scanGreaterEqual(key);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">          <span class="comment">//如果当前的叶节点里还有next，返回true</span></span><br><span class="line">            <span class="keyword">if</span>(currIter.hasNext())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">          <span class="comment">//如果当前没有了，但是还有rightSibling，那也还是true</span></span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                Optional&lt;LeafNode&gt; rightSibling = currNode.getRightSibling();</span><br><span class="line">                <span class="keyword">if</span>(rightSibling.isPresent())&#123;</span><br><span class="line">                    currNode = rightSibling.get();</span><br><span class="line">                    currIter = currNode.scanAll();</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> RecordId <span class="title function_">next</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">            <span class="keyword">if</span>(currIter.hasNext())&#123;</span><br><span class="line">                <span class="keyword">return</span> currIter.next();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NoSuchElementException</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>scanall</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Iterator&lt;RecordId&gt; <span class="title function_">scanAll</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">// TODO(proj4_integration): Update the following line</span></span><br><span class="line">      LockUtil.ensureSufficientLockHeld(lockContext, LockType.NL);</span><br><span class="line">      <span class="comment">// TODO(proj2): Return a BPlusTreeIterator.</span></span><br><span class="line">  		<span class="type">LeafNode</span> <span class="variable">leafNode</span> <span class="operator">=</span> root.getLeftmostLeaf();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BPlusTreeIterator</span>(leafNode);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>scanGreaterEqual</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Iterator&lt;RecordId&gt; <span class="title function_">scanGreaterEqual</span><span class="params">(DataBox key)</span> &#123;</span><br><span class="line">      typecheck(key);</span><br><span class="line">      <span class="comment">// TODO(proj4_integration): Update the following line</span></span><br><span class="line">      LockUtil.ensureSufficientLockHeld(lockContext, LockType.NL);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// TODO(proj2): Return a BPlusTreeIterator.</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BPlusTreeIterator</span>(root.get(key),key);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Task-4-Bulk-Load"><a href="#Task-4-Bulk-Load" class="headerlink" title="Task 4: Bulk Load"></a>Task 4: Bulk Load</h3><p>Much like the methods from the Task 2 you’ll need to implement <code>bulkLoad</code> within all three of <code>LeafNode</code>, <code>InnerNode</code>, and <code>BPlusTree</code>. Since bulk loading is a mutating operation you will need to call <code>sync()</code>. Be sure to read the instructions in <a target="_blank" rel="noopener" href="https://github.com/berkeley-cs186/fa23-rookiedb/blob/master/src/main/java/edu/berkeley/cs186/database/index/BPlusNode.java#L162"><code>BPluNode::bulkLoad</code></a> carefully to ensure you split your nodes properly. We’ve provided a visualization of bulk loading for an order 2 tree with fill factor 0.75 (<a target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1\_ghdp60NV6XRHnutFAL20k2no6tr2PosXGokYtR8WwU/edit?usp=sharing">powerpoint slides here</a>):</p>
+<p><strong>leafNode:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> Optional&lt;Pair&lt;DataBox, Long&gt;&gt; <span class="title function_">bulkLoad</span><span class="params">(Iterator&lt;Pair&lt;DataBox, RecordId&gt;&gt; data,</span></span><br><span class="line"><span class="params">          <span class="type">float</span> fillFactor)</span> &#123;</span><br><span class="line">      <span class="type">int</span> <span class="variable">d</span> <span class="operator">=</span> metadata.getOrder();</span><br><span class="line">      <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">      <span class="type">int</span> <span class="variable">maxNum</span> <span class="operator">=</span> (<span class="type">int</span>)Math.ceil(fillFactor*<span class="number">2</span>*d);</span><br><span class="line">      <span class="keyword">while</span>(keys.size() &lt; maxNum &amp;&amp; data.hasNext()) &#123;</span><br><span class="line">          Pair&lt;DataBox, RecordId&gt; pair = data.next();</span><br><span class="line">          <span class="type">DataBox</span> <span class="variable">key</span> <span class="operator">=</span> pair.getFirst();</span><br><span class="line">          <span class="type">RecordId</span> <span class="variable">rid</span> <span class="operator">=</span> pair.getSecond();</span><br><span class="line">        <span class="comment">//批量load直接add即可，put是找到插入到位置add，需要index</span></span><br><span class="line">          keys.add(key);</span><br><span class="line">          rids.add(rid);</span><br><span class="line">      &#125;</span><br><span class="line">      Optional&lt;Pair&lt;DataBox,Long&gt;&gt; ret = Optional.empty();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//如果超了在右边加1个</span></span><br><span class="line">      <span class="keyword">if</span>(data.hasNext())&#123;</span><br><span class="line">          List&lt;DataBox&gt; nKeys = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">          List&lt;RecordId&gt; nRecords = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">          Pair&lt;DataBox,RecordId&gt; pair = data.next();</span><br><span class="line">          <span class="type">DataBox</span> <span class="variable">key</span> <span class="operator">=</span> pair.getFirst();</span><br><span class="line">          <span class="type">RecordId</span> <span class="variable">rid</span> <span class="operator">=</span> pair.getSecond();</span><br><span class="line">          nKeys.add(key);</span><br><span class="line">          nRecords.add(rid);</span><br><span class="line">          <span class="type">LeafNode</span> <span class="variable">leafNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LeafNode</span>(metadata,bufferManager,nKeys,nRecords,rightSibling,treeContext);</span><br><span class="line">          rightSibling = Optional.of(leafNode.getPage().getPageNum());</span><br><span class="line">          ret = Optional.of(<span class="keyword">new</span> <span class="title class_">Pair</span>&lt;&gt;(pair.getFirst(),rightSibling.get()));</span><br><span class="line">      &#125;</span><br><span class="line">      sync();</span><br><span class="line">      <span class="keyword">return</span> ret;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>InnerNode：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> Optional&lt;Pair&lt;DataBox, Long&gt;&gt; <span class="title function_">bulkLoad</span><span class="params">(Iterator&lt;Pair&lt;DataBox, RecordId&gt;&gt; data,</span></span><br><span class="line"><span class="params">         <span class="type">float</span> fillFactor)</span> &#123;</span><br><span class="line">     <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">     <span class="type">BPlusNode</span> <span class="variable">rightMostChild</span> <span class="operator">=</span> getChild(children.size() - <span class="number">1</span>);</span><br><span class="line">     Optional&lt;Pair&lt;DataBox,Long&gt;&gt; backNode = rightMostChild.bulkLoad(data,fillFactor);</span><br><span class="line">     <span class="keyword">if</span>(!backNode.isPresent())&#123;</span><br><span class="line">         <span class="keyword">return</span> backNode;</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         <span class="type">DataBox</span> <span class="variable">k</span> <span class="operator">=</span> backNode.get().getFirst();</span><br><span class="line">         <span class="type">Long</span> <span class="variable">child</span> <span class="operator">=</span> backNode.get().getSecond();</span><br><span class="line">         Optional&lt;Pair&lt;DataBox,Long&gt;&gt;    info = insert(k,child);</span><br><span class="line">         <span class="keyword">if</span>(!info.isPresent())&#123;</span><br><span class="line">             <span class="keyword">return</span> bulkLoad(data,fillFactor);</span><br><span class="line">         &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">             <span class="keyword">return</span> info;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这里还有点疑惑</p>
+<p>BplusTree：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">bulkLoad</span><span class="params">(Iterator&lt;Pair&lt;DataBox, RecordId&gt;&gt; data, <span class="type">float</span> fillFactor)</span> &#123;</span><br><span class="line">    <span class="comment">// TODO(proj4_integration): Update the following line</span></span><br><span class="line">    LockUtil.ensureSufficientLockHeld(lockContext, LockType.NL);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// TODO(proj2): implement</span></span><br><span class="line">    <span class="keyword">if</span>(scanAll().hasNext())&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BPlusTreeException</span>(<span class="string">&quot;must be called in an empty tree&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(data.hasNext())&#123;</span><br><span class="line">        Optional&lt;Pair&lt;DataBox,Long&gt;&gt; backNode = root.bulkLoad(data,fillFactor);</span><br><span class="line">        backNode.ifPresent(dataBoxLongPair -&gt; splitRoot(dataBoxLongPair.getFirst(),dataBoxLongPair.getSecond()));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>和put类似。</p>
+<p><strong>All test pass.</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/database/" rel="tag"># database</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/12/12/leetcode-day12/" rel="prev" title="leetcode_day12">
+      <i class="fa fa-chevron-left"></i> leetcode_day12
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UCB-CS186"><span class="nav-number">1.</span> <span class="nav-text">UCB_CS186</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DATABASE-0-intro"><span class="nav-number">2.</span> <span class="nav-text">DATABASE-0-intro</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-System"><span class="nav-number">2.1.</span> <span class="nav-text">Database System</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#project-1"><span class="nav-number">3.</span> <span class="nav-text">project_1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Your-Tasks"><span class="nav-number">3.1.</span> <span class="nav-text">Your Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-2-Hall-of-Fame-Schools"><span class="nav-number">3.1.1.</span> <span class="nav-text">Task 2: Hall of Fame Schools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-3-SaberMetrics"><span class="nav-number">3.1.2.</span> <span class="nav-text">Task 3: SaberMetrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-4-Salaries"><span class="nav-number">3.1.3.</span> <span class="nav-text">Task 4: Salaries</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Disk-based-data-structure"><span class="nav-number">4.</span> <span class="nav-text">Disk-based data structure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tree"><span class="nav-number">4.1.</span> <span class="nav-text">B+Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties"><span class="nav-number">4.1.1.</span> <span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-insert-in-a-B-Tree"><span class="nav-number">4.1.2.</span> <span class="nav-text">how to insert in a B+Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Counting-IO%E2%80%99s"><span class="nav-number">4.1.3.</span> <span class="nav-text">Counting IO’s</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project2"><span class="nav-number">5.</span> <span class="nav-text">Project2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-important-class"><span class="nav-number">5.1.</span> <span class="nav-text">Some important class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Your-Tasks-1"><span class="nav-number">5.2.</span> <span class="nav-text">Your Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-1-LeafNode-fromBytes"><span class="nav-number">5.2.1.</span> <span class="nav-text">Task 1: LeafNode::fromBytes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-2-get-getLeftmostLeaf-put-remove"><span class="nav-number">5.2.2.</span> <span class="nav-text">Task 2: get, getLeftmostLeaf, put, remove</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-3-Scans"><span class="nav-number">5.2.3.</span> <span class="nav-text">Task 3: Scans</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-4-Bulk-Load"><span class="nav-number">5.2.4.</span> <span class="nav-text">Task 4: Bulk Load</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yan Zhang"
+      src="https://avatars.githubusercontent.com/u/69283019?v=4">
+  <p class="site-author-name" itemprop="name">Yan Zhang</p>
+  <div class="site-description" itemprop="description">student</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yanzhang404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanzhang404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1543890945@qq.com" title="E-Mail → 1543890945@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hei-zhu-1" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hei-zhu-1" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/6591141" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;6591141" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/zhang1yan" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;zhang1yan" rel="noopener" target="_blank"><i class="fab fa-gitee fa-fw"></i>Gitee</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Zhang</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">18k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">1:07</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
