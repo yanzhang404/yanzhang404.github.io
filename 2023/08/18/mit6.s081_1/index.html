@@ -1,26 +1,22 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="（一）qemu环境安装、xv6下载没有选择在mac本地写，还是想着在mac上装个虚拟机用linux，于是下载了vmware fushion以及ubuntu server 22.04，服务器版的没有图形化界面也不太想下了，用terminus ssh连上之后安装官网ubuntu的方法配置，但也遇到了qemu版本过高的问题，没办法只能回退版本，跟着知乎大佬重新安装了5.0.1的版本。除了qemu的版本问">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cloudy.png">
+  <link rel="icon" href="/img/cloudy.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yan Zhang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="（一）qemu环境安装、xv6下载没有选择在mac本地写，还是想着在mac上装个虚拟机用linux，于是下载了vmware fushion以及ubuntu server 22.04，服务器版的没有图形化界面也不太想下了，用terminus ssh连上之后安装官网ubuntu的方法配置，但也遇到了qemu版本过高的问题，没办法只能回退版本，跟着知乎大佬重新安装了5.0.1的版本。除了qemu的版本问">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mit6.s081_1">
 <meta property="og:url" content="http://example.com/2023/08/18/mit6.s081_1/index.html">
@@ -32,516 +28,732 @@
 <meta property="article:modified_time" content="2023-08-18T12:16:44.175Z">
 <meta property="article:author" content="Yan Zhang">
 <meta property="article:tag" content="os">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-07-24%2018.43.01.png">
-
-<link rel="canonical" href="http://example.com/2023/08/18/mit6.s081_1/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
-
-  <title>mit6.s081_1 | Yan</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=398806588"></script>
-    <script>
-      if (CONFIG.hostname === location.hostname) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '398806588');
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>mit6.s081_1 - Yan</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
       }
     </script>
+  
 
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yan</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/tagaki.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="mit6.s081_1"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Yan Zhang
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-18 20:14" pubdate>
+          August 18, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">mit6.s081_1</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on August 18, 2023 pm
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="（一）qemu环境安装、xv6下载"><a href="#（一）qemu环境安装、xv6下载" class="headerlink" title="（一）qemu环境安装、xv6下载"></a>（一）qemu环境安装、xv6下载</h1><p>没有选择在mac本地写，还是想着在mac上装个虚拟机用linux，于是下载了vmware fushion以及ubuntu server 22.04，服务器版的没有图形化界面也不太想下了，用terminus ssh连上之后安装官网ubuntu的方法配置，但也遇到了qemu版本过高的问题，没办法只能回退版本，跟着知乎大佬重新安装了5.0.1的版本。除了qemu的版本问题，还有一些其他小问题，不过都能解决。环境配置就跟着官网走就好。</p>
+<span id="more"></span>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">安装工具链</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo apt-get install git build-essential gdb-multiarch qemu-system-misc gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">安装5.0.1版本的qemu</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo apt-get remove qemu-system-misc</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">wget https://download.qemu.org/qemu-5.1.0.tar.xz</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">tar xf qemu-5.1.0.tar.xz</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> qemu-5.1.0</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">./configure --disable-kvm --disable-werror --prefix=/usr/local --target-list=<span class="hljs-string">&quot;riscv64-softmmu&quot;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">make</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo make install</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">克隆xv6仓库</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">clone</span> git://g.csail.mit.edu/xv6-labs-2020</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> xv6-labs-2020</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout util</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">进行编译</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">make qemu</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">xv6 kernel is booting</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-07-24%2018.43.01.png" srcset="/img/loading.gif" lazyload alt="env"></p>
+<h3 id="configure-这里出现了一些error，记录了一下解决方案"><a href="#configure-这里出现了一些error，记录了一下解决方案" class="headerlink" title="./configure 这里出现了一些error，记录了一下解决方案"></a>./configure 这里出现了一些error，记录了一下解决方案</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">1</span><br>ERROR: pkg-config binary &#x27;pkg-config&#x27; not found <br><span class="hljs-meta prompt_">#</span><span class="language-bash">install pkg-config</span><br>~/qemu-5.1.0$ sudo apt install pkg-config<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">2</span><br>ERROR: glib-2.48 gthread-2.0 is required to compile QEMU<br><span class="hljs-meta prompt_"># </span><span class="language-bash">install libglib2.0-dev</span><br>~/qemu-5.1.0$ sudo apt-get install libglib2.0-dev<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">3</span><br>ERROR: pixman &gt;= 0.21.8 not present.<br>       Please install the pixman devel package.<br><span class="hljs-meta prompt_"># </span><span class="language-bash">install libpixman-1-dev</span><br>~/qemu-5.1.0$ sudo apt-get install libpixman-1-dev<br></code></pre></td></tr></table></figure>
+<p>环境配好，开始进入mit6.s081的学习。</p>
+<h1 id="xv6书上内容笔记"><a href="#xv6书上内容笔记" class="headerlink" title="xv6书上内容笔记"></a>xv6书上内容笔记</h1><p>主要的循环利用getcmd来读取用户输入的一行，然后调用fork，创建一个shell程序的副本，父进程调用wait，子进程来运行这个命令。例如，当用户在shell中输入 “ echo hello”，runcmd就会被调用，runcmd会运行这个命令 ，对于echo hello，它会调用exec，如果exec成功，那么子进程会执行echo中的instruction来代替runcmd。在某时，echo会exit，这时父进程会从wait返回。</p>
+<h2 id="fork-exec"><a href="#fork-exec" class="headerlink" title="fork + exec"></a>fork + exec</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;user/user.h&quot;</span></span><br><span class="hljs-comment">// forkexec.c: fork then exec</span><br><span class="hljs-type">int</span><br><span class="hljs-title function_">main</span> <span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> pid, status;<br>    pid = fork();<br>    <span class="hljs-keyword">if</span>(pid ==<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-type">char</span> *argv [] = &#123; <span class="hljs-string">&quot;echo&quot;</span>, <span class="hljs-string">&quot;THIS&quot;</span>, <span class="hljs-string">&quot;IS&quot;</span>, <span class="hljs-string">&quot;ECHO&quot;</span>, <span class="hljs-number">0</span> &#125;;<br>        exec(<span class="hljs-string">&quot;echo&quot;</span>, argv);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;exec failed!\n&quot;</span>);<br>        <span class="hljs-built_in">exit</span> (<span class="hljs-number">1</span>);    <br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;parent waiting\n&quot;</span>);<br>        wait (&amp;status);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;the child exited with status %d\n&quot;</span>, status);<br>        &#125;    <br>    <span class="hljs-built_in">exit</span> (<span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>当shell要执行一条命令时，会先fork出一个子进程，由子进程去执行，即代码中pid==0时，子进程执行exec，会替换掉内存中的内容，执行echo，而不会执行下面的exec failed，若exec中是一个不存在的指令，则会执行下面的语句，exit(1)。父进程则会输出parent waiting</p>
+<h2 id="io-redirection"><a href="#io-redirection" class="headerlink" title="io redirection"></a>io redirection</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span><br><span class="hljs-title function_">main</span> <span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> pid;<br>    pid = fork();<br>    <span class="hljs-keyword">if</span>(pid == <span class="hljs-number">0</span>)&#123;<br>        close(<span class="hljs-number">1</span>);<br>        open (<span class="hljs-string">&quot;output.txt&quot;</span>, O_WRONLY|O_CREATE);<br>        <span class="hljs-type">char</span> *arg[] = &#123; <span class="hljs-string">&quot;echo&quot;</span>, <span class="hljs-string">&quot;this&quot;</span>, <span class="hljs-string">&quot;is&quot;</span>, <span class="hljs-string">&quot;redirected&quot;</span>, <span class="hljs-string">&quot;echo&quot;</span>, <span class="hljs-number">0</span> &#125;;<br>        exec (<span class="hljs-string">&quot;echo&quot;</span>, argv);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;exec failed!\n&quot;</span>);<br>        <span class="hljs-built_in">exit</span> (<span class="hljs-number">1</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        wait((<span class="hljs-type">int</span> *) <span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h1><p>写lab采用了vscode远程连接到本地虚拟机，很方便。</p>
+<h2 id="1-sleep-c"><a href="#1-sleep-c" class="headerlink" title="1.sleep.c"></a>1.sleep.c</h2><p>为xv6实现一个UNIX程序sleep，sleep要在用户指定的时间内暂停。时间是由xv6核决定的，是定时器芯片两次中断的时间。</p>
+<p>很简单，调用了sleep的system call。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/types.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/stat.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;user/user.h&quot;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span>&#123;<br><br>    <span class="hljs-keyword">if</span>(argc &lt;= <span class="hljs-number">1</span>)&#123;<br>        <span class="hljs-built_in">fprintf</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;Error: please input number\n&quot;</span>);<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-type">int</span> n = atoi(argv[<span class="hljs-number">1</span>]);<br>    sleep(n);    <br>    <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="遇到一个小问题，在使用grade测试的时候，显示："><a href="#遇到一个小问题，在使用grade测试的时候，显示：" class="headerlink" title="遇到一个小问题，在使用grade测试的时候，显示："></a>遇到一个小问题，在使用grade测试的时候，显示：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">~/xv6-labs-2020$ </span><span class="language-bash">./grade-lab-util <span class="hljs-built_in">sleep</span></span><br>/usr/bin/env: ‘python’: No such file or directory<br></code></pre></td></tr></table></figure>
+<p>查了一下解决办法，因为我的ubuntu的是python3，所以创建一个符号链接即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo ln -s /usr/bin/python3 /usr/bin/python<br></code></pre></td></tr></table></figure>
+<p>再次测试成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">sleep, no arguments: OK (2.1s) <br>== Test sleep, returns == sleep, returns: OK (1.1s) <br>== Test sleep, makes syscall == sleep, makes syscall: OK (1.0s) <br></code></pre></td></tr></table></figure>
+<h2 id="2-pingpong-c"><a href="#2-pingpong-c" class="headerlink" title="2. pingpong.c"></a>2. pingpong.c</h2><p>这题我理解为要设两个管道，因为子进程和父进程都要写和读，后来参考其他答案时有写两个的也有只需要写一个即可的，因此学习了1个pipe的解答。这题虽然是easy，但因为一些前置知识可能掌握的不好，查了很久资料才回来写，且刚开始写明显不熟悉。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/types.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/stat.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;user/user.h&quot;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span>&#123;<br>    <span class="hljs-type">int</span> p[<span class="hljs-number">2</span>];<span class="hljs-comment">//</span><br>    <span class="hljs-type">char</span> buf[<span class="hljs-number">2</span>];<span class="hljs-comment">//缓冲区，只需要写入1byte</span><br>    pipe(p); <span class="hljs-comment">//创建管道，p[0]读，p[1]写</span><br>    <span class="hljs-keyword">if</span>(fork() == <span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-type">int</span> pid = getpid();<br>        <span class="hljs-keyword">if</span>(read(p[<span class="hljs-number">0</span>],buf,<span class="hljs-number">1</span>) !=<span class="hljs-number">1</span>)&#123; <span class="hljs-comment">//</span><br>            <span class="hljs-built_in">fprintf</span>(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;ERROR\n&quot;</span>);<br>            <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);    <br>        &#125;<br>        close(p[<span class="hljs-number">0</span>]); <span class="hljs-comment">//读完关闭读端</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d: received ping\n&quot;</span>,pid);<br>        <span class="hljs-keyword">if</span>(write(p[<span class="hljs-number">1</span>],buf,<span class="hljs-number">1</span>)!=<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-built_in">fprintf</span>(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;ERROR\n&quot;</span>);<br>            <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-type">int</span> pid = getpid();<br>        <span class="hljs-keyword">if</span>(write(p[<span class="hljs-number">1</span>],buf,<span class="hljs-number">1</span>)!=<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-built_in">fprintf</span>(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;ERROR\n&quot;</span>);<br>            <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>        &#125;<br>        close(p[<span class="hljs-number">1</span>]);<br>        wait(<span class="hljs-number">0</span>); <span class="hljs-comment">//需要等待子进程读到数据，这个没想到</span><br>        <span class="hljs-keyword">if</span>(read(p[<span class="hljs-number">0</span>],buf,<span class="hljs-number">1</span>)!=<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-built_in">fprintf</span>(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;ERROR\n&quot;</span>);<br>            <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d: received pong\n&quot;</span>, pid);<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>最后测试OK</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">./grade-lab-util pingpong<br>make: &#x27;kernel/kernel&#x27; is up to date.<br>== Test pingpong == pingpong: OK (1.3s) <br></code></pre></td></tr></table></figure>
+<h2 id="3-primes-c"><a href="#3-primes-c" class="headerlink" title="3. primes.c"></a>3. primes.c</h2><p>本题已经把我难到，主要是对pipe的理解还不到位，查阅了一些资料，以及其他人的解法，理解了之后自己写了一下。也成功了。</p>
+<p>本题查看了题目所提供的文档<a href="[Lab: Xv6 and Unix utilities](https://pdos.csail.mit.edu/6.S081/2021/labs/util.html">Bell Labs and CSP Threads</a>) ，了解了埃式素数筛的原理，需要用pipe+fork来实现下面的伪代码：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">p = <span class="hljs-built_in">get</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">number</span> <span class="hljs-built_in">from</span> left neighbor<br>print p<br>loop:<br>    n = <span class="hljs-built_in">get</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">number</span> <span class="hljs-built_in">from</span> left neighbor<br>    <span class="hljs-keyword">if</span> (p does <span class="hljs-keyword">not</span> <span class="hljs-built_in">divide</span> n)<br>        <span class="hljs-built_in">send</span> n <span class="hljs-built_in">to</span> <span class="hljs-literal">right</span> neighbor<br></code></pre></td></tr></table></figure>
+<p>可以利用递归，不断的在子进程中创建子进程，直到将管道中的数都读完。代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/types.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/stat.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;user/user.h&quot;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">child</span><span class="hljs-params">(<span class="hljs-type">int</span> listenfd)</span>&#123;<span class="hljs-comment">//传入管道端读端</span><br>    <span class="hljs-type">int</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//在子进程中执行此函数</span><br>    <span class="hljs-type">int</span> re = read(listenfd,&amp;num,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>)); <br>    <span class="hljs-keyword">if</span>(re == <span class="hljs-number">0</span>)&#123;<span class="hljs-comment">//如果全部读完了就退出</span><br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>    &#125;<br><br>    <span class="hljs-type">int</span> p[<span class="hljs-number">2</span>];<span class="hljs-comment">//子进程创建管道，此时子进程作为主进程</span><br>    pipe(p);<br>    <span class="hljs-type">int</span> pid = fork();<br>    <span class="hljs-keyword">if</span>(!pid)&#123;<span class="hljs-comment">//在主进程中</span><br>        close(p[<span class="hljs-number">0</span>]);<span class="hljs-comment">//关闭新管道的读端</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;prime %d\n&quot;</span>, num);<span class="hljs-comment">//输出读到的第一个数字</span><br>        <span class="hljs-type">int</span> n = num;<br>        <span class="hljs-keyword">while</span>(read(listenfd,&amp;num,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>))!=<span class="hljs-number">0</span>)&#123;<span class="hljs-comment">//不断的从左管道读入数字</span><br>            <span class="hljs-keyword">if</span>(num % n)&#123;<span class="hljs-comment">//如果能整除，就传入新的管道</span><br>                write(p[<span class="hljs-number">1</span>],&amp;num,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>            &#125;<br>        &#125;<br>        close(p[<span class="hljs-number">1</span>]);<span class="hljs-comment">//关闭写端</span><br>        wait(<span class="hljs-number">0</span>);<span class="hljs-comment">//等待子进程</span><br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        close(p[<span class="hljs-number">1</span>]);<span class="hljs-comment">//关闭写端 否则文件描述符不够</span><br>        child(p[<span class="hljs-number">0</span>]);<span class="hljs-comment">//递归，再对读端调用函数</span><br>        close(p[<span class="hljs-number">0</span>]);<br>    &#125;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argv, <span class="hljs-type">char</span> *argc[])</span>&#123;<br>    <span class="hljs-type">int</span> p[<span class="hljs-number">2</span>];<span class="hljs-comment">//设一个管道</span><br>    pipe(p);<br>    <span class="hljs-type">int</span> pid = fork();<br>    <span class="hljs-keyword">if</span>(!pid)&#123; <span class="hljs-comment">//如果是主进程，则把2到35全部写入管道中</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i&lt;=<span class="hljs-number">35</span>;i++)&#123;<br>            write(p[<span class="hljs-number">1</span>],&amp;i,<span class="hljs-number">4</span>);<br>        &#125;<br>        close(p[<span class="hljs-number">1</span>]);<span class="hljs-comment">//关闭写端</span><br>        wait(<span class="hljs-number">0</span>); <span class="hljs-comment">//等待子进程结束</span><br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        close(p[<span class="hljs-number">1</span>]); <span class="hljs-comment">//子进程不需要用到写端</span><br>        child(p[<span class="hljs-number">0</span>]);<span class="hljs-comment">//对读端调用函数</span><br>        close(p[<span class="hljs-number">0</span>]);<span class="hljs-comment">//关闭读端</span><br>    &#125;<br>    <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="4-find-c"><a href="#4-find-c" class="headerlink" title="4. find.c"></a>4. find.c</h2><p>本题hint查看ls.c来学习如何对目录文件进行遍历，稍微修改即是find的答案，</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">case</span> T_DIR:<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">strlen</span>(path) + <span class="hljs-number">1</span> + DIRSIZ + <span class="hljs-number">1</span> &gt; <span class="hljs-keyword">sizeof</span> buf)&#123;<br>      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ls: path too long\n&quot;</span>);<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-built_in">strcpy</span>(buf, path);<br>    p = buf+<span class="hljs-built_in">strlen</span>(buf);<br>    *p++ = <span class="hljs-string">&#x27;/&#x27;</span>;<br>    <span class="hljs-keyword">while</span>(read(fd, &amp;de, <span class="hljs-keyword">sizeof</span>(de)) == <span class="hljs-keyword">sizeof</span>(de))&#123;<br>      <span class="hljs-keyword">if</span>(de.inum == <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">continue</span>;<br>      memmove(p, de.name, DIRSIZ);<br></code></pre></td></tr></table></figure>
+<p>在ls.c中，若fd指向一个目录，则可以利用每次读一个目录大小的bytes来遍历目录。</p>
+<p>find代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/types.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/stat.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;user/user.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/fs.h&quot;</span></span><br><br><span class="hljs-comment">//find传入的参数是要查找的目录和要查找的文件</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">char</span> *path, <span class="hljs-type">char</span> *file)</span>&#123;<br>  <span class="hljs-type">char</span> buf[<span class="hljs-number">512</span>], *p;  <span class="hljs-comment">//缓存区，一个指针</span><br>  <span class="hljs-type">int</span> fd; <span class="hljs-comment">//file discriptor</span><br>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">dirent</span> <span class="hljs-title">de</span>;</span> <span class="hljs-comment">// 一个目录项的结构体</span><br>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">stat</span> <span class="hljs-title">st</span>;</span> <span class="hljs-comment">//一个文件属性的结构体</span><br>  <span class="hljs-comment">//fd打开path，st是path文件的属性</span><br>  <span class="hljs-keyword">if</span>((fd = open(path, <span class="hljs-number">0</span>)) &lt; <span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-built_in">fprintf</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;find cannot open %s\n&quot;</span>, path);<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-keyword">if</span>(fstat(fd, &amp;st) &lt; <span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-built_in">fprintf</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;find cannot stat %s\n&quot;</span>,path);<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br><br>  <span class="hljs-comment">//因为已经有path了，直接添加到buf中</span><br>  <span class="hljs-built_in">strcpy</span>(buf, path);<br>  p = buf + <span class="hljs-built_in">strlen</span>(buf);<br>  *p++ = <span class="hljs-string">&#x27;/&#x27;</span>;<br>  <span class="hljs-comment">//一开始传入的路径肯定是一个目录，因此对目录循环读取一个de</span><br>  <span class="hljs-keyword">while</span>(read(fd, &amp;de, <span class="hljs-keyword">sizeof</span>(de)) == <span class="hljs-keyword">sizeof</span>(de))&#123;<br>    <span class="hljs-keyword">if</span>(de.inum == <span class="hljs-number">0</span>)<br>      <span class="hljs-keyword">continue</span>;<br>    memmove(p, de.name, DIRSIZ);<br>    p[DIRSIZ] = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>(stat(buf, &amp;st) &lt; <span class="hljs-number">0</span>)&#123;<br>      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;find : cannot stat %s\n&quot;</span>, buf);<br>      <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-comment">//添加完后，开始将读到的文件与file进行对比</span><br>    <span class="hljs-keyword">switch</span> (st.type)<br>    &#123;<br>    <span class="hljs-keyword">case</span> T_FILE:<br>      <span class="hljs-keyword">if</span>(<span class="hljs-built_in">strcmp</span>(de.name,file) == <span class="hljs-number">0</span>)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>,buf);<br>      <span class="hljs-keyword">break</span>;<br><br>    <span class="hljs-keyword">case</span> T_DIR:<br>      <span class="hljs-keyword">if</span>(<span class="hljs-built_in">strcmp</span>(de.name, <span class="hljs-string">&quot;.&quot;</span>) &amp;&amp; <span class="hljs-built_in">strcmp</span>(de.name, <span class="hljs-string">&quot;..&quot;</span>))<br>        find(buf, file);<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>  &#125;<br>  close(fd); <span class="hljs-comment">//及时关闭fd</span><br>  <span class="hljs-keyword">return</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[])</span>&#123;<br>    <span class="hljs-keyword">if</span>(argc &lt; <span class="hljs-number">2</span>)&#123;<br>      find(<span class="hljs-string">&quot;.&quot;</span>, argv[<span class="hljs-number">1</span>]);<br>    &#125;<br>    <span class="hljs-keyword">if</span>(argc == <span class="hljs-number">3</span>)&#123;<br>      find(argv[<span class="hljs-number">1</span>], argv[<span class="hljs-number">2</span>]);<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-built_in">fprintf</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;ERROR\n&quot;</span>);<br>      <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="5-xargs-c"><a href="#5-xargs-c" class="headerlink" title="5. xargs.c"></a>5. xargs.c</h2><p>将标准输入的的内容作为xargs后面的命令的参数，核心思想是重新设置新的参数数组，利用fork+exec来执行命令。代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/types.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/stat.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;user/user.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;kernel/param.h&quot;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 32</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[])</span>&#123;<br>    <span class="hljs-type">char</span> buf[MAXSIZE];<br>    read(<span class="hljs-number">0</span>, buf, MAXSIZE); <span class="hljs-comment">//从标准输入读到缓冲区</span><br><br><br>    <span class="hljs-type">char</span>* xargv[MAXARG];<br>    <span class="hljs-type">int</span> xargc=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; argc; i++)&#123; <span class="hljs-comment">// 新的参数</span><br>        xargv[xargc++] = argv[i];<br>    &#125;<br><br>    <span class="hljs-type">char</span> *p = buf;<span class="hljs-comment">//指针指向缓冲区</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i&lt; MAXSIZE; i++)&#123;<br>        <span class="hljs-keyword">if</span>(buf[i] == <span class="hljs-string">&#x27;\n&#x27;</span>)&#123;<br>            <span class="hljs-type">int</span> pid = fork();<br>            <span class="hljs-keyword">if</span>( pid == <span class="hljs-number">0</span>)&#123; <span class="hljs-comment">//child</span><br>                buf[i] = <span class="hljs-number">0</span>;<br>                xargv[xargc] = p;<br>                xargc++;<br>                xargv[xargc] = <span class="hljs-number">0</span>;<br>                exec(xargv[<span class="hljs-number">0</span>], xargv); <span class="hljs-comment">//执行新的命令</span><br>                <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                p = &amp;buf[i+<span class="hljs-number">1</span>]; <span class="hljs-comment">//父进程修改p指针的地址到下一个参数</span><br>                wait(<span class="hljs-number">0</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br><br><br>    wait(<span class="hljs-number">0</span>);<br>    <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>   基础太差导致花了很久才写完lab1，但也学到了很多。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/study/" class="category-chain-item">study</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/os/" class="print-no-link">#os</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>mit6.s081_1</div>
+      <div>http://example.com/2023/08/18/mit6.s081_1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Yan Zhang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 18, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/18/mit6.s081_2/" title="mit6.s081_2">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mit6.s081_2</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/20/my-first-article/" title="my first article">
+                        <span class="hidden-mobile">my first article</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        Views: 
+        <span id="busuanzi_value_site_pv"></span>
+        
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        Visitors: 
+        <span id="busuanzi_value_site_uv"></span>
+        
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?3fbf61bd5636603690d55ed973dbb1e3";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
   </script>
 
 
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Yan</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">be water my friend</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
   
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/18/mit6.s081_1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/69283019?v=4">
-      <meta itemprop="name" content="Yan Zhang">
-      <meta itemprop="description" content="student">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          mit6.s081_1
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-08-18 20:14:01 / Modified: 20:16:44" itemprop="dateCreated datePublished" datetime="2023-08-18T20:14:01+08:00">2023-08-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.2k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>8 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="（一）qemu环境安装、xv6下载"><a href="#（一）qemu环境安装、xv6下载" class="headerlink" title="（一）qemu环境安装、xv6下载"></a>（一）qemu环境安装、xv6下载</h1><p>没有选择在mac本地写，还是想着在mac上装个虚拟机用linux，于是下载了vmware fushion以及ubuntu server 22.04，服务器版的没有图形化界面也不太想下了，用terminus ssh连上之后安装官网ubuntu的方法配置，但也遇到了qemu版本过高的问题，没办法只能回退版本，跟着知乎大佬重新安装了5.0.1的版本。除了qemu的版本问题，还有一些其他小问题，不过都能解决。环境配置就跟着官网走就好。</p>
-<span id="more"></span>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装工具链</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo apt-get install git build-essential gdb-multiarch qemu-system-misc gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装5.0.1版本的qemu</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo apt-get remove qemu-system-misc</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">wget https://download.qemu.org/qemu-5.1.0.tar.xz</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tar xf qemu-5.1.0.tar.xz</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> qemu-5.1.0</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./configure --disable-kvm --disable-werror --prefix=/usr/local --target-list=<span class="string">&quot;riscv64-softmmu&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">make</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo make install</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">克隆xv6仓库</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> git://g.csail.mit.edu/xv6-labs-2020</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> xv6-labs-2020</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git checkout util</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进行编译</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">make qemu</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">xv6 kernel is booting</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/yanzhang404/Image/main/%E6%88%AA%E5%B1%8F2023-07-24%2018.43.01.png" alt="env"></p>
-<h3 id="configure-这里出现了一些error，记录了一下解决方案"><a href="#configure-这里出现了一些error，记录了一下解决方案" class="headerlink" title="./configure 这里出现了一些error，记录了一下解决方案"></a>./configure 这里出现了一些error，记录了一下解决方案</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1</span></span><br><span class="line">ERROR: pkg-config binary &#x27;pkg-config&#x27; not found </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">install pkg-config</span></span><br><span class="line">~/qemu-5.1.0$ sudo apt install pkg-config</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2</span></span><br><span class="line">ERROR: glib-2.48 gthread-2.0 is required to compile QEMU</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install libglib2.0-dev</span></span><br><span class="line">~/qemu-5.1.0$ sudo apt-get install libglib2.0-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">3</span></span><br><span class="line">ERROR: pixman &gt;= 0.21.8 not present.</span><br><span class="line">       Please install the pixman devel package.</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install libpixman-1-dev</span></span><br><span class="line">~/qemu-5.1.0$ sudo apt-get install libpixman-1-dev</span><br></pre></td></tr></table></figure>
-<p>环境配好，开始进入mit6.s081的学习。</p>
-<h1 id="xv6书上内容笔记"><a href="#xv6书上内容笔记" class="headerlink" title="xv6书上内容笔记"></a>xv6书上内容笔记</h1><p>主要的循环利用getcmd来读取用户输入的一行，然后调用fork，创建一个shell程序的副本，父进程调用wait，子进程来运行这个命令。例如，当用户在shell中输入 “ echo hello”，runcmd就会被调用，runcmd会运行这个命令 ，对于echo hello，它会调用exec，如果exec成功，那么子进程会执行echo中的instruction来代替runcmd。在某时，echo会exit，这时父进程会从wait返回。</p>
-<h2 id="fork-exec"><a href="#fork-exec" class="headerlink" title="fork + exec"></a>fork + exec</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;user/user.h&quot;</span></span></span><br><span class="line"><span class="comment">// forkexec.c: fork then exec</span></span><br><span class="line"><span class="type">int</span></span><br><span class="line"><span class="title function_">main</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> pid, status;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(pid ==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="type">char</span> *argv [] = &#123; <span class="string">&quot;echo&quot;</span>, <span class="string">&quot;THIS&quot;</span>, <span class="string">&quot;IS&quot;</span>, <span class="string">&quot;ECHO&quot;</span>, <span class="number">0</span> &#125;;</span><br><span class="line">        exec(<span class="string">&quot;echo&quot;</span>, argv);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;exec failed!\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span> (<span class="number">1</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;parent waiting\n&quot;</span>);</span><br><span class="line">        wait (&amp;status);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;the child exited with status %d\n&quot;</span>, status);</span><br><span class="line">        &#125;    </span><br><span class="line">    <span class="built_in">exit</span> (<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当shell要执行一条命令时，会先fork出一个子进程，由子进程去执行，即代码中pid==0时，子进程执行exec，会替换掉内存中的内容，执行echo，而不会执行下面的exec failed，若exec中是一个不存在的指令，则会执行下面的语句，exit(1)。父进程则会输出parent waiting</p>
-<h2 id="io-redirection"><a href="#io-redirection" class="headerlink" title="io redirection"></a>io redirection</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span></span><br><span class="line"><span class="title function_">main</span> <span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(pid == <span class="number">0</span>)&#123;</span><br><span class="line">        close(<span class="number">1</span>);</span><br><span class="line">        open (<span class="string">&quot;output.txt&quot;</span>, O_WRONLY|O_CREATE);</span><br><span class="line">        <span class="type">char</span> *arg[] = &#123; <span class="string">&quot;echo&quot;</span>, <span class="string">&quot;this&quot;</span>, <span class="string">&quot;is&quot;</span>, <span class="string">&quot;redirected&quot;</span>, <span class="string">&quot;echo&quot;</span>, <span class="number">0</span> &#125;;</span><br><span class="line">        exec (<span class="string">&quot;echo&quot;</span>, argv);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;exec failed!\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span> (<span class="number">1</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        wait((<span class="type">int</span> *) <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h1><p>写lab采用了vscode远程连接到本地虚拟机，很方便。</p>
-<h2 id="1-sleep-c"><a href="#1-sleep-c" class="headerlink" title="1.sleep.c"></a>1.sleep.c</h2><p>为xv6实现一个UNIX程序sleep，sleep要在用户指定的时间内暂停。时间是由xv6核决定的，是定时器芯片两次中断的时间。</p>
-<p>很简单，调用了sleep的system call。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/types.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/stat.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;user/user.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(argc &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="number">2</span>, <span class="string">&quot;Error: please input number\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> n = atoi(argv[<span class="number">1</span>]);</span><br><span class="line">    sleep(n);    </span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="遇到一个小问题，在使用grade测试的时候，显示："><a href="#遇到一个小问题，在使用grade测试的时候，显示：" class="headerlink" title="遇到一个小问题，在使用grade测试的时候，显示："></a>遇到一个小问题，在使用grade测试的时候，显示：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">~/xv6-labs-2020$ </span><span class="language-bash">./grade-lab-util <span class="built_in">sleep</span></span></span><br><span class="line">/usr/bin/env: ‘python’: No such file or directory</span><br></pre></td></tr></table></figure>
-<p>查了一下解决办法，因为我的ubuntu的是python3，所以创建一个符号链接即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/bin/python3 /usr/bin/python</span><br></pre></td></tr></table></figure>
-<p>再次测试成功：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sleep, no arguments: OK (2.1s) </span><br><span class="line">== Test sleep, returns == sleep, returns: OK (1.1s) </span><br><span class="line">== Test sleep, makes syscall == sleep, makes syscall: OK (1.0s) </span><br></pre></td></tr></table></figure>
-<h2 id="2-pingpong-c"><a href="#2-pingpong-c" class="headerlink" title="2. pingpong.c"></a>2. pingpong.c</h2><p>这题我理解为要设两个管道，因为子进程和父进程都要写和读，后来参考其他答案时有写两个的也有只需要写一个即可的，因此学习了1个pipe的解答。这题虽然是easy，但因为一些前置知识可能掌握的不好，查了很久资料才回来写，且刚开始写明显不熟悉。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/types.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/stat.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;user/user.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span>&#123;</span><br><span class="line">    <span class="type">int</span> p[<span class="number">2</span>];<span class="comment">//</span></span><br><span class="line">    <span class="type">char</span> buf[<span class="number">2</span>];<span class="comment">//缓冲区，只需要写入1byte</span></span><br><span class="line">    pipe(p); <span class="comment">//创建管道，p[0]读，p[1]写</span></span><br><span class="line">    <span class="keyword">if</span>(fork() == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="type">int</span> pid = getpid();</span><br><span class="line">        <span class="keyword">if</span>(read(p[<span class="number">0</span>],buf,<span class="number">1</span>) !=<span class="number">1</span>)&#123; <span class="comment">//</span></span><br><span class="line">            <span class="built_in">fprintf</span>(<span class="number">2</span>,<span class="string">&quot;ERROR\n&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);    </span><br><span class="line">        &#125;</span><br><span class="line">        close(p[<span class="number">0</span>]); <span class="comment">//读完关闭读端</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d: received ping\n&quot;</span>,pid);</span><br><span class="line">        <span class="keyword">if</span>(write(p[<span class="number">1</span>],buf,<span class="number">1</span>)!=<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">fprintf</span>(<span class="number">2</span>,<span class="string">&quot;ERROR\n&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="type">int</span> pid = getpid();</span><br><span class="line">        <span class="keyword">if</span>(write(p[<span class="number">1</span>],buf,<span class="number">1</span>)!=<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">fprintf</span>(<span class="number">2</span>,<span class="string">&quot;ERROR\n&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        close(p[<span class="number">1</span>]);</span><br><span class="line">        wait(<span class="number">0</span>); <span class="comment">//需要等待子进程读到数据，这个没想到</span></span><br><span class="line">        <span class="keyword">if</span>(read(p[<span class="number">0</span>],buf,<span class="number">1</span>)!=<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">fprintf</span>(<span class="number">2</span>,<span class="string">&quot;ERROR\n&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d: received pong\n&quot;</span>, pid);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后测试OK</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./grade-lab-util pingpong</span><br><span class="line">make: &#x27;kernel/kernel&#x27; is up to date.</span><br><span class="line">== Test pingpong == pingpong: OK (1.3s) </span><br></pre></td></tr></table></figure>
-<h2 id="3-primes-c"><a href="#3-primes-c" class="headerlink" title="3. primes.c"></a>3. primes.c</h2><p>本题已经把我难到，主要是对pipe的理解还不到位，查阅了一些资料，以及其他人的解法，理解了之后自己写了一下。也成功了。</p>
-<p>本题查看了题目所提供的文档<a href="[Lab: Xv6 and Unix utilities](https://pdos.csail.mit.edu/6.S081/2021/labs/util.html">Bell Labs and CSP Threads</a>) ，了解了埃式素数筛的原理，需要用pipe+fork来实现下面的伪代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = get a number from left neighbor</span><br><span class="line">print p</span><br><span class="line">loop:</span><br><span class="line">    n = get a number from left neighbor</span><br><span class="line">    if (p does not divide n)</span><br><span class="line">        send n to right neighbor</span><br></pre></td></tr></table></figure>
-<p>可以利用递归，不断的在子进程中创建子进程，直到将管道中的数都读完。代码如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/types.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/stat.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;user/user.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">child</span><span class="params">(<span class="type">int</span> listenfd)</span>&#123;<span class="comment">//传入管道端读端</span></span><br><span class="line">    <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//在子进程中执行此函数</span></span><br><span class="line">    <span class="type">int</span> re = read(listenfd,&amp;num,<span class="keyword">sizeof</span>(<span class="type">int</span>)); </span><br><span class="line">    <span class="keyword">if</span>(re == <span class="number">0</span>)&#123;<span class="comment">//如果全部读完了就退出</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> p[<span class="number">2</span>];<span class="comment">//子进程创建管道，此时子进程作为主进程</span></span><br><span class="line">    pipe(p);</span><br><span class="line">    <span class="type">int</span> pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(!pid)&#123;<span class="comment">//在主进程中</span></span><br><span class="line">        close(p[<span class="number">0</span>]);<span class="comment">//关闭新管道的读端</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;prime %d\n&quot;</span>, num);<span class="comment">//输出读到的第一个数字</span></span><br><span class="line">        <span class="type">int</span> n = num;</span><br><span class="line">        <span class="keyword">while</span>(read(listenfd,&amp;num,<span class="keyword">sizeof</span>(<span class="type">int</span>))!=<span class="number">0</span>)&#123;<span class="comment">//不断的从左管道读入数字</span></span><br><span class="line">            <span class="keyword">if</span>(num % n)&#123;<span class="comment">//如果能整除，就传入新的管道</span></span><br><span class="line">                write(p[<span class="number">1</span>],&amp;num,<span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        close(p[<span class="number">1</span>]);<span class="comment">//关闭写端</span></span><br><span class="line">        wait(<span class="number">0</span>);<span class="comment">//等待子进程</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        close(p[<span class="number">1</span>]);<span class="comment">//关闭写端 否则文件描述符不够</span></span><br><span class="line">        child(p[<span class="number">0</span>]);<span class="comment">//递归，再对读端调用函数</span></span><br><span class="line">        close(p[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argv, <span class="type">char</span> *argc[])</span>&#123;</span><br><span class="line">    <span class="type">int</span> p[<span class="number">2</span>];<span class="comment">//设一个管道</span></span><br><span class="line">    pipe(p);</span><br><span class="line">    <span class="type">int</span> pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(!pid)&#123; <span class="comment">//如果是主进程，则把2到35全部写入管道中</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i&lt;=<span class="number">35</span>;i++)&#123;</span><br><span class="line">            write(p[<span class="number">1</span>],&amp;i,<span class="number">4</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        close(p[<span class="number">1</span>]);<span class="comment">//关闭写端</span></span><br><span class="line">        wait(<span class="number">0</span>); <span class="comment">//等待子进程结束</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        close(p[<span class="number">1</span>]); <span class="comment">//子进程不需要用到写端</span></span><br><span class="line">        child(p[<span class="number">0</span>]);<span class="comment">//对读端调用函数</span></span><br><span class="line">        close(p[<span class="number">0</span>]);<span class="comment">//关闭读端</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4-find-c"><a href="#4-find-c" class="headerlink" title="4. find.c"></a>4. find.c</h2><p>本题hint查看ls.c来学习如何对目录文件进行遍历，稍微修改即是find的答案，</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> T_DIR:</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">strlen</span>(path) + <span class="number">1</span> + DIRSIZ + <span class="number">1</span> &gt; <span class="keyword">sizeof</span> buf)&#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;ls: path too long\n&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">strcpy</span>(buf, path);</span><br><span class="line">    p = buf+<span class="built_in">strlen</span>(buf);</span><br><span class="line">    *p++ = <span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">    <span class="keyword">while</span>(read(fd, &amp;de, <span class="keyword">sizeof</span>(de)) == <span class="keyword">sizeof</span>(de))&#123;</span><br><span class="line">      <span class="keyword">if</span>(de.inum == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      memmove(p, de.name, DIRSIZ);</span><br></pre></td></tr></table></figure>
-<p>在ls.c中，若fd指向一个目录，则可以利用每次读一个目录大小的bytes来遍历目录。</p>
-<p>find代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/types.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/stat.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;user/user.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/fs.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//find传入的参数是要查找的目录和要查找的文件</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">find</span><span class="params">(<span class="type">char</span> *path, <span class="type">char</span> *file)</span>&#123;</span><br><span class="line">  <span class="type">char</span> buf[<span class="number">512</span>], *p;  <span class="comment">//缓存区，一个指针</span></span><br><span class="line">  <span class="type">int</span> fd; <span class="comment">//file discriptor</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">dirent</span> <span class="title">de</span>;</span> <span class="comment">// 一个目录项的结构体</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">stat</span> <span class="title">st</span>;</span> <span class="comment">//一个文件属性的结构体</span></span><br><span class="line">  <span class="comment">//fd打开path，st是path文件的属性</span></span><br><span class="line">  <span class="keyword">if</span>((fd = open(path, <span class="number">0</span>)) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="number">2</span>, <span class="string">&quot;find cannot open %s\n&quot;</span>, path);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(fstat(fd, &amp;st) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="number">2</span>, <span class="string">&quot;find cannot stat %s\n&quot;</span>,path);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//因为已经有path了，直接添加到buf中</span></span><br><span class="line">  <span class="built_in">strcpy</span>(buf, path);</span><br><span class="line">  p = buf + <span class="built_in">strlen</span>(buf);</span><br><span class="line">  *p++ = <span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">  <span class="comment">//一开始传入的路径肯定是一个目录，因此对目录循环读取一个de</span></span><br><span class="line">  <span class="keyword">while</span>(read(fd, &amp;de, <span class="keyword">sizeof</span>(de)) == <span class="keyword">sizeof</span>(de))&#123;</span><br><span class="line">    <span class="keyword">if</span>(de.inum == <span class="number">0</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    memmove(p, de.name, DIRSIZ);</span><br><span class="line">    p[DIRSIZ] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(stat(buf, &amp;st) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;find : cannot stat %s\n&quot;</span>, buf);</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//添加完后，开始将读到的文件与file进行对比</span></span><br><span class="line">    <span class="keyword">switch</span> (st.type)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">case</span> T_FILE:</span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">strcmp</span>(de.name,file) == <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,buf);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> T_DIR:</span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">strcmp</span>(de.name, <span class="string">&quot;.&quot;</span>) &amp;&amp; <span class="built_in">strcmp</span>(de.name, <span class="string">&quot;..&quot;</span>))</span><br><span class="line">        find(buf, file);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  close(fd); <span class="comment">//及时关闭fd</span></span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(argc &lt; <span class="number">2</span>)&#123;</span><br><span class="line">      find(<span class="string">&quot;.&quot;</span>, argv[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(argc == <span class="number">3</span>)&#123;</span><br><span class="line">      find(argv[<span class="number">1</span>], argv[<span class="number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="number">2</span>, <span class="string">&quot;ERROR\n&quot;</span>);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5-xargs-c"><a href="#5-xargs-c" class="headerlink" title="5. xargs.c"></a>5. xargs.c</h2><p>将标准输入的的内容作为xargs后面的命令的参数，核心思想是重新设置新的参数数组，利用fork+exec来执行命令。代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/types.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/stat.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;user/user.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kernel/param.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 32</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span>&#123;</span><br><span class="line">    <span class="type">char</span> buf[MAXSIZE];</span><br><span class="line">    read(<span class="number">0</span>, buf, MAXSIZE); <span class="comment">//从标准输入读到缓冲区</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="type">char</span>* xargv[MAXARG];</span><br><span class="line">    <span class="type">int</span> xargc=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; argc; i++)&#123; <span class="comment">// 新的参数</span></span><br><span class="line">        xargv[xargc++] = argv[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> *p = buf;<span class="comment">//指针指向缓冲区</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i&lt; MAXSIZE; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(buf[i] == <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">            <span class="type">int</span> pid = fork();</span><br><span class="line">            <span class="keyword">if</span>( pid == <span class="number">0</span>)&#123; <span class="comment">//child</span></span><br><span class="line">                buf[i] = <span class="number">0</span>;</span><br><span class="line">                xargv[xargc] = p;</span><br><span class="line">                xargc++;</span><br><span class="line">                xargv[xargc] = <span class="number">0</span>;</span><br><span class="line">                exec(xargv[<span class="number">0</span>], xargv); <span class="comment">//执行新的命令</span></span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                p = &amp;buf[i+<span class="number">1</span>]; <span class="comment">//父进程修改p指针的地址到下一个参数</span></span><br><span class="line">                wait(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    wait(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   基础太差导致花了很久才写完lab1，但也学到了很多。</p>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/os/" rel="tag"># os</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2023/07/20/my-first-article/" rel="prev" title="my first article">
-      <i class="fa fa-chevron-left"></i> my first article
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/08/18/mit6.s081_2/" rel="next" title="mit6.s081_2">
-      mit6.s081_2 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
-          </div>
-          
 
+  
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
     }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
       }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
     });
-  }
+  });
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
+  <script>Fluid.plugins.codeWidget();</script>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89qemu%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E3%80%81xv6%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">（一）qemu环境安装、xv6下载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#configure-%E8%BF%99%E9%87%8C%E5%87%BA%E7%8E%B0%E4%BA%86%E4%B8%80%E4%BA%9Berror%EF%BC%8C%E8%AE%B0%E5%BD%95%E4%BA%86%E4%B8%80%E4%B8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.0.1.</span> <span class="nav-text">.&#x2F;configure 这里出现了一些error，记录了一下解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xv6%E4%B9%A6%E4%B8%8A%E5%86%85%E5%AE%B9%E7%AC%94%E8%AE%B0"><span class="nav-number">2.</span> <span class="nav-text">xv6书上内容笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fork-exec"><span class="nav-number">2.1.</span> <span class="nav-text">fork + exec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#io-redirection"><span class="nav-number">2.2.</span> <span class="nav-text">io redirection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab1"><span class="nav-number">3.</span> <span class="nav-text">lab1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-sleep-c"><span class="nav-number">3.1.</span> <span class="nav-text">1.sleep.c</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%97%AE%E9%A2%98%EF%BC%8C%E5%9C%A8%E4%BD%BF%E7%94%A8grade%E6%B5%8B%E8%AF%95%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%98%BE%E7%A4%BA%EF%BC%9A"><span class="nav-number">3.1.1.</span> <span class="nav-text">遇到一个小问题，在使用grade测试的时候，显示：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-pingpong-c"><span class="nav-number">3.2.</span> <span class="nav-text">2. pingpong.c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-primes-c"><span class="nav-number">3.3.</span> <span class="nav-text">3. primes.c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-find-c"><span class="nav-number">3.4.</span> <span class="nav-text">4. find.c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-xargs-c"><span class="nav-number">3.5.</span> <span class="nav-text">5. xargs.c</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Yan Zhang"
-      src="https://avatars.githubusercontent.com/u/69283019?v=4">
-  <p class="site-author-name" itemprop="name">Yan Zhang</p>
-  <div class="site-description" itemprop="description">student</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">19</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/yanzhang404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yanzhang404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/1543890945@qq.com" title="E-Mail → 1543890945@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/hei-zhu-1" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hei-zhu-1" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://space.bilibili.com/6591141" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;6591141" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://gitee.com/zhang1yan" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;zhang1yan" rel="noopener" target="_blank"><i class="fab fa-gitee fa-fw"></i>Gitee</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Yan Zhang</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
-    </span>
-      <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">19k</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">1:10</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
-  </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
 
-<script src="/js/utils.js"></script>
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
 
-<script src="/js/motion.js"></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
 
-<script src="/js/schemes/muse.js"></script>
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-<script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
