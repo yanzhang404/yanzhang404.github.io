@@ -16,15 +16,15 @@
   <meta name="author" content="Yan Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最长有效括号(32)依然是利用括号匹配的两个原则，1，任意前缀中 “(“ &gt; “)”，”(“  &#x3D;&#x3D; “)”。 我们可以将序列分段。当出现第一个右括号多于左括号的位置时，后面就不会出现匹配的序列了。 因此求出这一段中的最长有效括号序列，然后更新段的起点。继续做相同的事。 代码： 123456789101112131415161718192021222324252627282930313233">
+    <meta name="description" content="求根节点到叶节点数字之和(129)回溯，主要是，如果为空先返回，只有当左右节点都空，再把答案加到结果里。 可以用字符，也可以用int直接进行处理。 代码： 12345678910111213141516171819202122232425class Solution &amp;#123;public:    vector&lt;int&gt; res;    int temp;    int sumNum">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode_day14">
-<meta property="og:url" content="http://example.com/2023/12/14/leetcode-day14/index.html">
+<meta property="og:title" content="leetcode_day15">
+<meta property="og:url" content="http://example.com/2023/12/15/leetcode-day15/index.html">
 <meta property="og:site_name" content="Yan">
-<meta property="og:description" content="最长有效括号(32)依然是利用括号匹配的两个原则，1，任意前缀中 “(“ &gt; “)”，”(“  &#x3D;&#x3D; “)”。 我们可以将序列分段。当出现第一个右括号多于左括号的位置时，后面就不会出现匹配的序列了。 因此求出这一段中的最长有效括号序列，然后更新段的起点。继续做相同的事。 代码： 123456789101112131415161718192021222324252627282930313233">
+<meta property="og:description" content="求根节点到叶节点数字之和(129)回溯，主要是，如果为空先返回，只有当左右节点都空，再把答案加到结果里。 可以用字符，也可以用int直接进行处理。 代码： 12345678910111213141516171819202122232425class Solution &amp;#123;public:    vector&lt;int&gt; res;    int temp;    int sumNum">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-14T14:48:55.000Z">
-<meta property="article:modified_time" content="2023-12-15T01:51:46.828Z">
+<meta property="article:published_time" content="2023-12-15T14:31:15.000Z">
+<meta property="article:modified_time" content="2023-12-15T15:51:19.333Z">
 <meta property="article:author" content="Yan Zhang">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>leetcode_day14 - Yan</title>
+  <title>leetcode_day15 - Yan</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="leetcode_day14"></span>
+            <span id="subtitle" data-typed-text="leetcode_day15"></span>
           
         </div>
 
@@ -242,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-14 22:48" pubdate>
-          December 14, 2023 pm
+        <time datetime="2023-12-15 22:31" pubdate>
+          December 15, 2023 pm
         </time>
       </span>
     
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          264 words
+          285 words
         
       </span>
     
@@ -323,12 +323,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">leetcode_day14</h1>
+            <h1 id="seo-header">leetcode_day15</h1>
             
               <p class="note note-info">
                 
                   
-                    Last updated on December 15, 2023 am
+                    Last updated on December 15, 2023 pm
                   
                 
               </p>
@@ -336,24 +336,17 @@
             
               <div class="markdown-body">
                 
-                <h2 id="最长有效括号-32"><a href="#最长有效括号-32" class="headerlink" title="最长有效括号(32)"></a>最长有效括号(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-valid-parentheses/description/">32</a>)</h2><p>依然是利用括号匹配的两个原则，1，任意前缀中 “(“ &gt; “)”，”(“  == “)”。</p>
-<p>我们可以将序列分段。当出现第一个右括号多于左括号的位置时，后面就不会出现匹配的序列了。</p>
-<p>因此求出这一段中的最长有效括号序列，然后更新段的起点。继续做相同的事。</p>
+                <h2 id="求根节点到叶节点数字之和-129"><a href="#求根节点到叶节点数字之和-129" class="headerlink" title="求根节点到叶节点数字之和(129)"></a>求根节点到叶节点数字之和(129)</h2><p>回溯，主要是，如果为空先返回，只有当左右节点都空，再把答案加到结果里。</p>
+<p>可以用字符，也可以用int直接进行处理。</p>
 <p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">longestValidParentheses</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        stack&lt;<span class="hljs-type">int</span>&gt; st; <span class="hljs-comment">// 存放左括号的下标</span><br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>      <span class="hljs-comment">//start代表这一段开始的上一个位置，所以从-1开始。</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, start = <span class="hljs-number">-1</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++)&#123;<br>            <span class="hljs-comment">//左括号就入栈</span><br>          	<span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;(&#x27;</span>)&#123;<br>                st.<span class="hljs-built_in">push</span>(i);<br>            &#125;<br>            <span class="hljs-keyword">else</span>&#123;<br>              	<span class="hljs-comment">//如果栈非空，说明有匹配的，先弹出元素代表匹配</span><br>                <span class="hljs-keyword">if</span>(st.<span class="hljs-built_in">size</span>())&#123;<br>                    st.<span class="hljs-built_in">pop</span>();<br>                  <span class="hljs-comment">//此时还有左括号，说明从这个左括号往右的都是匹配的，可以求一下res</span><br>                    <span class="hljs-keyword">if</span>(st.<span class="hljs-built_in">size</span>())&#123;<br>                        res = <span class="hljs-built_in">max</span>(res, i - st.<span class="hljs-built_in">top</span>());<br>                    &#125;<br>                  	<span class="hljs-comment">//如果空了，说明到顶了，全部匹配完了。直接与开始位置相减</span><br>                    <span class="hljs-keyword">else</span>&#123;<br>                        res = <span class="hljs-built_in">max</span>(res, i - start);<br>                    &#125;<br>                &#125;<br>              	<span class="hljs-comment">//栈空代表没有左括号和右括号匹配，所以这一段结束</span><br>                <span class="hljs-keyword">else</span>&#123;<br>                  			<span class="hljs-comment">//将这个多余的右括号的位置更新为新的start</span><br>                        start = i;<br>                    &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="二叉树前序遍历-144"><a href="#二叉树前序遍历-144" class="headerlink" title="二叉树前序遍历(144)"></a>二叉树前序遍历(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-preorder-traversal/description/">144</a>)</h2><p>简单题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;<span class="hljs-type">int</span>&gt; res;<br>    <span class="hljs-type">int</span> temp;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">sumNumbers</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-built_in">dfs</span>(root);<br>        <span class="hljs-type">int</span> ant = <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> i : res)&#123;<br>           ant+=i;<br>       &#125;<br>        <span class="hljs-keyword">return</span> ant;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* root)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(!root)   <span class="hljs-keyword">return</span>;<br>        temp = temp * <span class="hljs-number">10</span> + root-&gt;val;<br>        <span class="hljs-keyword">if</span>(!root-&gt;left &amp;&amp; !root-&gt;right)&#123;<br>            res.<span class="hljs-built_in">push_back</span>(temp);<br>        &#125;<br>        <span class="hljs-built_in">dfs</span>(root-&gt;left);<br>        <span class="hljs-built_in">dfs</span>(root-&gt;right);<br>        temp = temp / <span class="hljs-number">10</span>;   <br>    &#125;  <br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="对称二叉树-101"><a href="#对称二叉树-101" class="headerlink" title="对称二叉树(101)"></a>对称二叉树(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/symmetric-tree/description/">101</a>)</h2><p>每次检查当前两个节点，以及左节点的右节点和右节点的左节点，以及左节点的左节点和右节点的右节点。</p>
 <p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;<span class="hljs-type">int</span>&gt; res;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-built_in">dfs</span>(root);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* root)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(!root)   <span class="hljs-keyword">return</span>;<br>        <span class="hljs-keyword">else</span>&#123;<br>            res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>            <span class="hljs-built_in">dfs</span>(root-&gt;left);<br>            <span class="hljs-built_in">dfs</span>(root-&gt;right);<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="二叉树的最大深度-104"><a href="#二叉树的最大深度-104" class="headerlink" title="二叉树的最大深度(104)"></a>二叉树的最大深度(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104</a>)</h2><p>递归求左右子树的深度，取最大+1.</p>
-<p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">dfs</span>(root);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* root)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(!root)   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(<span class="hljs-built_in">dfs</span>(root-&gt;left),<span class="hljs-built_in">dfs</span>(root-&gt;right)) + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h2 id="平衡二叉树-110"><a href="#平衡二叉树-110" class="headerlink" title="平衡二叉树(110)"></a>平衡二叉树(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/balanced-binary-tree/description/">110</a>)</h2><p>根据题意求解即可。</p>
-<p>也可设立一个bool类型的全局变量。</p>
-<p>在计算高度的时候顺便判断true or false。这个想法也不错。</p>
-<p>我是写了两个递归。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isBalanced</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(!root)   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-type">int</span> left = <span class="hljs-built_in">treeHeight</span>(root-&gt;left);<br>        <span class="hljs-type">int</span> right = <span class="hljs-built_in">treeHeight</span>(root-&gt;right);<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(left - right) &lt;= <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">isBalanced</span>(root-&gt;left) &amp;&amp; <span class="hljs-built_in">isBalanced</span>(root-&gt;right))&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125; <br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br><br><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">treeHeight</span><span class="hljs-params">(TreeNode* root)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(!root)   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(<span class="hljs-built_in">treeHeight</span>(root-&gt;left),<span class="hljs-built_in">treeHeight</span>(root-&gt;right)) + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>这个耗时可能低一点。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">bool</span> ans;<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isBalanced</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        ans = <span class="hljs-literal">true</span>;<br>        <span class="hljs-built_in">dfs</span>(root);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* root)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(!root)    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> lh = <span class="hljs-built_in">dfs</span>(root-&gt;left);<br>        <span class="hljs-type">int</span> rh = <span class="hljs-built_in">dfs</span>(root-&gt;right);<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(lh - rh) &gt; <span class="hljs-number">1</span>)    ans = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(lh, rh) + <span class="hljs-number">1</span>;<br>    &#125;<br><br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(!root)   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        TreeNode *L = root-&gt;left;<br>        TreeNode *R = root-&gt;right;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">check</span>(L,R);<br>    &#125;<br><br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(TreeNode* L, TreeNode* R)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(!L || !R)&#123;<br>            <span class="hljs-keyword">if</span>(L != R)   <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <br>        <span class="hljs-keyword">if</span>(L-&gt;val == R-&gt;val)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">check</span>(L-&gt;right, R-&gt;left) &amp;&amp; <span class="hljs-built_in">check</span>(L-&gt;left,R-&gt;right);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="二叉树的直径-543"><a href="#二叉树的直径-543" class="headerlink" title="二叉树的直径(543)"></a>二叉树的直径(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/diameter-of-binary-tree/description/">543</a>)</h2><p>跟<a target="_blank" rel="noopener" href="https://yanzhang404.github.io/2023/12/05/leetcode-day5/#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C-124">二叉树的最长路径</a>那题一样，只不过这题计算边的个数而已。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> ans;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">diameterOfBinaryTree</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        ans = INT_MIN;<br>        <span class="hljs-built_in">dfs</span>(root);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* root)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(!root)   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> l = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">dfs</span>(root-&gt;left)), r = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">dfs</span>(root-&gt;right));<br>        ans = <span class="hljs-built_in">max</span>(ans, l + r);<br>        <span class="hljs-keyword">return</span>  <span class="hljs-built_in">max</span>(l, r ) + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="组合总和-39"><a href="#组合总和-39" class="headerlink" title="组合总和(39)"></a>组合总和(<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum/description/">39</a>)</h2><p>回溯爆搜，每次都判断当前位置的数可以选几个。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>    vector&lt;<span class="hljs-type">int</span>&gt; path;<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">combinationSum</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; c, <span class="hljs-type">int</span> target) &#123;<br>        <span class="hljs-built_in">dfs</span>(c,<span class="hljs-number">0</span>,target);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; c, <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> target)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(target == <span class="hljs-number">0</span>)&#123;<br>            res.<span class="hljs-built_in">push_back</span>(path);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>( u == c.<span class="hljs-built_in">size</span>())  <span class="hljs-keyword">return</span>;<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; c[u] * i &lt;= target; i++)&#123;<br>            <span class="hljs-built_in">dfs</span>(c,u+<span class="hljs-number">1</span>, target - c[u] * i);<br>            path.<span class="hljs-built_in">push_back</span>(c[u]);<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; c[u] * i &lt;= target; i++)&#123;<br>            path.<span class="hljs-built_in">pop_back</span>();<br>        &#125;<br>        <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -399,8 +392,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>leetcode_day14</div>
-      <div>http://example.com/2023/12/14/leetcode-day14/</div>
+      <div>leetcode_day15</div>
+      <div>http://example.com/2023/12/15/leetcode-day15/</div>
     </div>
     <div class="license-meta">
       
@@ -412,7 +405,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 14, 2023</div>
+          <div>December 15, 2023</div>
         </div>
       
       
@@ -444,18 +437,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/15/leetcode-day15/" title="leetcode_day15">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">leetcode_day15</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/13/leetcode-day13/" title="leetcode_day13">
-                        <span class="hidden-mobile">leetcode_day13</span>
+                      <a href="/2023/12/14/leetcode-day14/" title="leetcode_day14">
+                        <span class="hidden-mobile">leetcode_day14</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
