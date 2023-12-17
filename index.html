@@ -252,14 +252,14 @@
       <h2 class="index-header">
         
         <a href="/2023/12/16/leetcode-day16/" target="_self">
-          leetcode_day16
+          leetcode_day16~20
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/12/16/leetcode-day16/" target="_self">
         <div>
-          验证二叉搜索树(98)数据是长整型的，需要long long 代码： 123456789101112class Solution &#123;public:    bool isValidBST(TreeNode* root) &#123;        return help(root, LONG_MIN,LONG_MAX);    &#125;    bool help(TreeNode* r
+          Day16验证二叉搜索树(98)数据是长整型的，需要long long 代码： 123456789101112class Solution &#123;public:    bool isValidBST(TreeNode* root) &#123;        return help(root, LONG_MIN,LONG_MAX);    &#125;    bool help(TreeNo
         </div>
       </a>
 
@@ -269,189 +269,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2023-12-16 20:21" pubdate>
               2023-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/study/" class="category-chain-item">study</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/algorithm/">#algorithm</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/15/leetcode-day15/" target="_self">
-          leetcode_day15
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/15/leetcode-day15/" target="_self">
-        <div>
-          求根节点到叶节点数字之和(129)回溯，主要是，如果为空先返回，只有当左右节点都空，再把答案加到结果里。 可以用字符，也可以用int直接进行处理。 代码： 12345678910111213141516171819202122232425class Solution &#123;public:    vector&lt;int&gt; res;    int temp;    int sumNum
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-15 22:31" pubdate>
-              2023-12-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/study/" class="category-chain-item">study</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/algorithm/">#algorithm</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/14/leetcode-day14/" target="_self">
-          leetcode_day14
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/14/leetcode-day14/" target="_self">
-        <div>
-          最长有效括号(32)依然是利用括号匹配的两个原则，1，任意前缀中 “(“ &gt; “)”，”(“  == “)”。 我们可以将序列分段。当出现第一个右括号多于左括号的位置时，后面就不会出现匹配的序列了。 因此求出这一段中的最长有效括号序列，然后更新段的起点。继续做相同的事。 代码： 123456789101112131415161718192021222324252627282930313233
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-14 22:48" pubdate>
-              2023-12-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/study/" class="category-chain-item">study</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/algorithm/">#algorithm</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/13/leetcode-day13/" target="_self">
-          leetcode_day13
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/13/leetcode-day13/" target="_self">
-        <div>
-          从前序与中序遍历序列构造二叉树(105)主要就是用hash表存一下inorder里每个点的位置，然后每次根据preorder找到root在inorder里的位置，将序列分为两个区间，再递归构造二叉树。关键是需要一个额外的函数去实现这个递归过程，因为要传入参数之类的。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-13 11:48" pubdate>
-              2023-12-13
             </time>
           </div>
         
@@ -556,76 +373,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/12/leetcode-day12/" target="_self">
-          leetcode_day12
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/12/leetcode-day12/" target="_self">
-        <div>
-          比较版本号(165)记录每个点之前的数，相当于比较一个数组的字典序。 可以使用stoi，直接忽略了前导零。 代码： 1234567891011121314151617class Solution &#123;public:    int compareVersion(string v1, string v2) &#123;        for(int i = 0, j = 0; i &lt; v
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-12 12:17" pubdate>
-              2023-12-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/study/" class="category-chain-item">study</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/algorithm/">#algorithm</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2023/12/11/leetcode-day11/" target="_self">
-          leetcode_day11
+          leetcode_day11~15
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/12/11/leetcode-day11/" target="_self">
         <div>
-          括号生成(22)如何判断一个只含小括号的序列是都匹配的括号序列。 1.任意前缀中，左括号数量大于右括号。 2.左右括号总数量相等。（本题均为n） 满足以上条件即合法，本题只需考虑第一个条件。
+          Day11括号生成(22)如何判断一个只含小括号的序列是都匹配的括号序列。 1.任意前缀中，左括号数量大于右括号。 2.左右括号总数量相等。（本题均为n） 满足以上条件即合法，本题只需考虑第一个条件。
         </div>
       </a>
 
@@ -678,15 +434,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/10/leetcode-day10/" target="_self">
-          leetcode_day10
+        <a href="/2023/12/06/leetcode-day6/" target="_self">
+          leetcode_day6~10
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/10/leetcode-day10/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/06/leetcode-day6/" target="_self">
         <div>
-          爬楼梯(70)dp，代码： 123456789101112131415class Solution &#123;public:    int climbStairs(int n) &#123;        if(n == 1) return 1;        int a = 1;        int b = 2;        for(int i = 3; i &lt;= n; i++)&#
+          Day6编辑距离(72)动态规划，这里是y总的思路。 dp [i] [j] 代表的是按顺序将A[1-i]变成B[1-j]所需要的步数，属性就是最小值。
         </div>
       </a>
 
@@ -694,8 +450,48 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-10 22:45" pubdate>
-              2023-12-10
+            <time datetime="2023-12-06 18:07" pubdate>
+              2023-12-06
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/algorithm/">#algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/01/leetcode_day1/" target="_self">
+          leetcode_day1~5
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/01/leetcode_day1/" target="_self">
+        <div>
+          Day1三数之和(15)采用双指针算法，先将数组排序，并确保i&lt;j&lt;k，固定i后对j和k是双指针。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-01 18:53" pubdate>
+              2023-12-01
             </time>
           </div>
         
@@ -739,15 +535,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/09/leetcode-day9/" target="_self">
-          leetcode_day9
+        <a href="/2023/11/30/leetcode_day0/" target="_self">
+          leetcode_day0
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/09/leetcode-day9/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/30/leetcode_day0/" target="_self">
         <div>
-          排序链表(148)下一个排列(31)他会先升序再降序，所以找到第一个使得nums[k-1]&lt;nums[k]的数，如果都是倒序的话，就直接翻转就行。 然后找到右边降序的第一个比nums[k-1]大的数字。交换，再将降序的序列反转。
+          重新开启刷题计划，希望能坚持下去。按照codetop的顺序往下刷。 每日题量不定。包含了题目即leetcode链接。 不会的题目全部参考的acwing的题解。 无重复字符的最长子串(3)给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。首先想到了动态规划，dp[i]存放了到第i个数的最长子串，所以计算第i个时候需要从第i-1个点最长中遍历看看有没有重复的，如果有，那dp[i]
         </div>
       </a>
 
@@ -755,8 +551,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-09 23:17" pubdate>
-              2023-12-09
+            <time datetime="2023-11-30 20:00" pubdate>
+              2023-11-30
             </time>
           </div>
         
@@ -800,15 +596,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/08/leetcode-day8/" target="_self">
-          leetcode_day8
+        <a href="/2023/11/20/ubuntu%E5%AE%89%E8%A3%85docker/" target="_self">
+          docker install and apply
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/08/leetcode-day8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/20/ubuntu%E5%AE%89%E8%A3%85docker/" target="_self">
         <div>
-          删除排序链表中的重复元素II(82)利用双指针，为了防止头节点也是重复的，我们设立虚拟头节点dummy。然后p = dummy, q = p-&gt;next，每次判断后面的元素是否与q相等，如果相等，找到第一个不相等的，然后让p指向这个节点，并更新q为这个节点。如果不相等，让p，q往后移动一个节点。 代码： 1234567891011121314151617181920212223class S
+          docker安装及使用一、ubuntu安装docker更新现有的包： sudo apt update sudo apt upgrade 使用apt安装允许通过HTTPS才能使用的软件包： 12sudo apt install apt-transport-https ca-certificates curl software-properties-common 将官方docker存储库的GPG密匙添
         </div>
       </a>
 
@@ -816,8 +612,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-08 19:24" pubdate>
-              2023-12-08
+            <time datetime="2023-11-20 20:40" pubdate>
+              2023-11-20
             </time>
           </div>
         
@@ -847,7 +643,190 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/algorithm/">#algorithm</a>
+              <a href="/tags/docker/">#docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/18/mit6.s081_2/" target="_self">
+          mit6.s081_2
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/18/mit6.s081_2/" target="_self">
+        <div>
+          lab2本节视频与书的内容主要讲了操作系统为了保证程序的强隔离性，将硬件资源抽象，禁止程序直接访问硬件，例如程序只通过open，read等系统调用来和存储交互，而不是直接读写磁盘。 操作系统设置了用户模式和内核模式，内核模式下可以使用所有系统资源，用户通过system call来要求内核为其完成某些操作。 本章也提出了微内核和宏内核的一些区别。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-18 20:17" pubdate>
+              2023-08-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/study/" class="category-chain-item">study</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/os/">#os</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/18/mit6.s081_1/" target="_self">
+          mit6.s081_1
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/18/mit6.s081_1/" target="_self">
+        <div>
+          （一）qemu环境安装、xv6下载没有选择在mac本地写，还是想着在mac上装个虚拟机用linux，于是下载了vmware fushion以及ubuntu server 22.04，服务器版的没有图形化界面也不太想下了，用terminus ssh连上之后安装官网ubuntu的方法配置，但也遇到了qemu版本过高的问题，没办法只能回退版本，跟着知乎大佬重新安装了5.0.1的版本。除了qemu的版本问
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-18 20:14" pubdate>
+              2023-08-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/study/" class="category-chain-item">study</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/os/">#os</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/07/20/my-first-article/" target="_self">
+          my first article
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/20/my-first-article/" target="_self">
+        <div>
+          IntroductionHello, my name is Zhangyan. I am 23 years old. I just graduated from the School of Mathematical Sciences, Soochow University and I will go to study software engineering at the School of So
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-20 03:40" pubdate>
+              2023-07-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/thought/" class="category-chain-item">thought</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/intro/">#intro</a>
             
           </div>
         
@@ -856,12 +835,6 @@
   </div>
 
 
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
 
 
 
